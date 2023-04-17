@@ -21,6 +21,7 @@ class AuthController extends GetxController {
       email = TextEditingController(),
       pass = TextEditingController(),
       confirmPass = TextEditingController(),
+  announcement=TextEditingController(),
       remember =false.obs,
       specId = "1".obs,
       imgFile = File("").obs;

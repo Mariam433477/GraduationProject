@@ -4,14 +4,11 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:sakenny/controller/authentication.dart';
 
 import '../components/shared.dart';
-
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
-
   @override
   State<SignIn> createState() => _SignInState();
 }
-
 class _SignInState extends State<SignIn> {
   String msg="";
   bool passwordObscured =true;
@@ -19,8 +16,8 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-      appBar: AppBar(leading:GestureDetector(child: Icon(Icons.arrow_back,size: 30,color:Color(0xffF23B5F)),
+      appBar:
+      AppBar(leading:GestureDetector(child: Icon(Icons.arrow_back,size: 30,color:Color(0xffF23B5F)),
         onTap: (){Get.back();},),backgroundColor: Color(0xfff9f9f9),elevation: 0,),
         body: SingleChildScrollView(
           child: Center(
@@ -90,8 +87,6 @@ class _SignInState extends State<SignIn> {
                                   });
                                   },
                                 ),
-
-
                             Txt('Remember Me',Colors.grey,15,FontWeight.normal),
 SizedBox(width: width*0.1,),
 
@@ -99,7 +94,6 @@ SizedBox(width: width*0.1,),
                                   Color(0xfff9f9f9),(){
                                     Get.toNamed("/ResetPassword");
                                   }),
-
                           ],
                         ),
                       ),

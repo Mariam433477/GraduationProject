@@ -5,7 +5,8 @@ import 'package:get/get.dart';
 double width=Get.width,height=Get.height;
 var acceptPolicy=false.obs, left=false.obs;
 //colors
-Color redColor=const Color(0xffed1c21),yellowColor=const Color(0xffffd010);
+Color redColor=const Color(0xffed1c21),yellowColor=const Color(0xffffd010),pinkColor=const Color(0xffF23B5F);
+
 
 isArabic(text) {
   var arabic = RegExp(r'[\u0750-\u077F]');
@@ -90,16 +91,50 @@ Widget Input(var control,String hint,bool pass,TextInputType type,var suffix){
   // var border=OutlineInputBorder(borderSide: BorderSide(width: 3, color: Colors.white));
 return  Container(width:width*0.9,
   decoration:BoxDecoration(borderRadius: BorderRadius.circular(5),
-      color:Colors.white ),height: 48,
-  child:   TextField(controller: control,obscureText:  pass,keyboardType: type,
-    style: TxtStyle("",const Color(0xff8b8d9e), 15, FontWeight.w500),
-    decoration: InputDecoration(fillColor:Color(0xffececec),filled: true,suffixIcon:suffix,
-    border: InputBorder.none,focusedBorder: InputBorder.none,
-    hintText:hint,hintStyle: TxtStyle("",const Color(0xff8b8d9e), 15, FontWeight.w500),
+      color:Color(0xffececec)),height: 48,
+  child:  Padding(
+    padding: const EdgeInsets.only(left: 15),
+    child: TextField(controller: control,obscureText:  pass,keyboardType: type,
+      style: TxtStyle("",const Color(0xff8b8d9e), 15, FontWeight.w500),
+      decoration: InputDecoration( suffixIcon:suffix,
+      border: InputBorder.none,focusedBorder: InputBorder.none,
+      hintText:hint,hintStyle: TxtStyle("",const Color(0xff8b8d9e), 15, FontWeight.w500),
 
-    )),
+      )),
+  ),
 );
  }
+Widget InputOutline(var control,String hint,bool pass,TextInputType type,var suffix){
+   var border=OutlineInputBorder(borderSide: BorderSide(width: 1, color:  Color(0xff25334D)));
+  return  Container(width:width*0.9,
+    decoration:BoxDecoration(borderRadius: BorderRadius.circular(5),
+        ),height: 40,
+    child:  Padding(
+      padding: const EdgeInsets.only(left: 4),
+      child: TextField(controller: control,obscureText:  pass,keyboardType: type,
+          style: TxtStyle("",const Color(0xff8b8d9e), 15, FontWeight.w500),
+          decoration: InputDecoration(fillColor:Color(0xfff9f9f9),filled: true, suffixIcon:suffix,
+            border:  border,focusedBorder: border,
+            hintText:hint,hintStyle: TxtStyle("",const Color(0xff8b8d9e), 15, FontWeight.w500),
+
+          )),
+    ),
+  );
+}
+Widget Inputunderline(var control,String label,bool pass,TextInputType type,var suffix){
+  var border=UnderlineInputBorder(borderSide: BorderSide(width: 3, color: Color(0xff25334D)));
+  return  Container(width:width*0.9,
+    decoration:BoxDecoration(borderRadius: BorderRadius.circular(5),
+        color:Colors.white ),height: 48,
+    child:   TextField(controller: control,obscureText:  pass,keyboardType: type,
+        style: TxtStyle("",const Color(0xff25334D), 15, FontWeight.w500),
+        decoration: InputDecoration(fillColor:Color(0xfff9f9f9),filled: true,suffixIcon:suffix,
+          border: border,focusedBorder: border,
+          label:  Txt(label, Color(0xff25334D), 20, FontWeight.bold),labelStyle: TxtStyle("",const Color(0xff8b8d9e), 15, FontWeight.bold),
+
+        )),
+  );
+}
 Widget Line(double w)=>Container(color: redColor,width:w ,height: 3);
 
 // void DonePop(bool done,var txt){
