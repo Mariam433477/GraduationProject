@@ -33,40 +33,50 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       appBar:AppBar(
-         automaticallyImplyLeading: false,
-          backgroundColor: Color(0xffE0E0E0),
-          elevation:
-           0,leading:Icon(Icons.home, size: 40, color: Color(0xffF23B5F)) ,title:   RichText(text: TextSpan(
-            children: [
-              TextSpan(
-                text: 'Sake',
-                style: TxtStyle('Sake',  Color(0xff25334D), 30,  FontWeight.bold),
-
-              ),
-              TextSpan(
-                text: 'nn',
-                style: TxtStyle('nn',   Color(0xffF23B5F), 30,  FontWeight.bold),
-
-              ),
-              TextSpan(
-                text: 'y',
-                style: TxtStyle('y',   Color(0xff25334D), 30,  FontWeight.bold),
-
-
-              ),
-            ],
-          )),actions: [
-      IconButton(onPressed: (){
-      Get.toNamed("/Setting");
-      }, icon:
-         FaIcon(FontAwesomeIcons.list, size: 30, color: Color(0xff25334D)),
-      )
-       ],
-       ),
-
-      body:
-      SingleChildScrollView(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Color(0xffE0E0E0),
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(
+            Icons.home,
+            size: 40,
+            color: Color(0xffF23B5F),
+          ),
+          onPressed: () {
+            setState(() {
+              Get.toNamed('/Apartment');
+            });
+          },
+        ),
+        title: RichText(
+            text: TextSpan(
+          children: [
+            TextSpan(
+              text: 'Sake',
+              style: TxtStyle('Sake', Color(0xff25334D), 30, FontWeight.bold),
+            ),
+            TextSpan(
+              text: 'nn',
+              style: TxtStyle('nn', Color(0xffF23B5F), 30, FontWeight.bold),
+            ),
+            TextSpan(
+              text: 'y',
+              style: TxtStyle('y', Color(0xff25334D), 30, FontWeight.bold),
+            ),
+          ],
+        )),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Get.toNamed("/Setting");
+            },
+            icon: FaIcon(FontAwesomeIcons.list,
+                size: 30, color: Color(0xff25334D)),
+          )
+        ],
+      ),
+      body: SingleChildScrollView(
         child: Column(children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -88,23 +98,25 @@ class _HomeState extends State<Home> {
                   child: Column(
                     children: [
                       Padding(
-                        padding:
-                            const EdgeInsets.only(left: 20.0, top: 15, bottom: 15),
+                        padding: const EdgeInsets.only(
+                            left: 20.0, top: 15, bottom: 15),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Txt('Search in', Colors.white, 20, FontWeight.normal),
+                            Txt('Search in', Colors.white, 20,
+                                FontWeight.normal),
                           ],
                         ),
                       ),
-                      dropDown(countriesList, (value){
+                      dropDown(countriesList, (value) {
                         setState(() {
-                          itemSelected=value;
+                          itemSelected = value;
                         });
-                      },true,Colors.white,Color(0xff25334D),Color(0xff25334D),width*0.8),
+                      }, true, Colors.white, Color(0xff25334D),
+                          Color(0xff25334D), width * 0.8),
                       Padding(
-                        padding:
-                            const EdgeInsets.only(left: 20.0, top: 15, bottom: 15),
+                        padding: const EdgeInsets.only(
+                            left: 20.0, top: 15, bottom: 15),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
@@ -113,11 +125,12 @@ class _HomeState extends State<Home> {
                           ],
                         ),
                       ),
-                      dropDown(countriesList1, (value){
+                      dropDown(countriesList1, (value) {
                         setState(() {
-                          itemSelected1=value;
+                          itemSelected1 = value;
                         });
-                      },false,Colors.white,Color(0xff25334D),Color(0xff25334D),width*0.8),
+                      }, false, Colors.white, Color(0xff25334D),
+                          Color(0xff25334D), width * 0.8),
                       SizedBox(
                         height: height * 0.07,
                       ),
@@ -139,31 +152,46 @@ class _HomeState extends State<Home> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-
               MainBtn(
                   Txt('Filter By', Colors.grey, 20, FontWeight.normal),
                   width * 0.4,
                   height * 0.07,
                   10,
                   Color(0xffE0E0E0),
-                  Color(0xffE0E0E0),
-                  () {}),
+                  Color(0xffE0E0E0), () {
+                Get.toNamed("/OrderOf");
+              }),
               SizedBox(
                 width: width * 0.07,
               ),
               MainBtn(
                   Txt('Drop Down', Colors.white, 20, FontWeight.normal),
-                  width * 0.4, height * 0.07, 10, Color(0xffF23B5F), Color(0xffE0E0E0), () {}),
+                  width * 0.4,
+                  height * 0.07,
+                  10,
+                  Color(0xffF23B5F),
+                  Color(0xffE0E0E0), () {
+                Get.toNamed("/SortOf");
+              }),
             ],
           ),
-          SizedBox(height: 20,),
           SizedBox(
-            height: height*0.5,width: width,
-          child: ListView.builder(
-            itemCount: 5,
-              itemBuilder: (context,i){
-            return mainBox("https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", 'Egypt-Tanta', '1000', 3, 50, 'شقة للايجار بطنطا 75 متر الدور الاول علوى');
-          }),
+            height: 20,
+          ),
+          SizedBox(
+            height: height * 0.5,
+            width: width,
+            child: ListView.builder(
+                itemCount: 5,
+                itemBuilder: (context, i) {
+                  return mainBox(
+                      "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                      'Egypt-Tanta',
+                      '1000',
+                      3,
+                      50,
+                      'شقة للايجار بطنطا 75 متر الدور الاول علوى');
+                }),
           ),
         ]),
       ),

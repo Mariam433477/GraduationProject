@@ -7,11 +7,13 @@ import 'package:sakenny/components/shared.dart';
 import '../components/detailsAnnouncement.dart';
 import '../components/home.dart';
 import '../controller/authentication.dart';
+
 class DetailsOfAnnouncement extends StatefulWidget {
   const DetailsOfAnnouncement({Key? key}) : super(key: key);
   @override
   State<DetailsOfAnnouncement> createState() => _DetailsOfAnnouncementState();
 }
+
 class _DetailsOfAnnouncementState extends State<DetailsOfAnnouncement> {
   AuthController authController = Get.put(AuthController());
   List<String> List1 = [
@@ -27,7 +29,18 @@ class _DetailsOfAnnouncementState extends State<DetailsOfAnnouncement> {
           automaticallyImplyLeading: false,
           backgroundColor: Color(0xffE0E0E0),
           elevation: 0,
-          leading: Icon(Icons.home, size: 40, color: Color(0xffF23B5F)),
+          leading: IconButton(
+            icon: Icon(
+              Icons.home,
+              size: 40,
+              color: Color(0xffF23B5F),
+            ),
+            onPressed: () {
+              setState(() {
+                Get.toNamed('/Home');
+              });
+            },
+          ),
           title: RichText(
               text: TextSpan(
             children: [
@@ -62,7 +75,7 @@ class _DetailsOfAnnouncementState extends State<DetailsOfAnnouncement> {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 40       ,
+                      height: 40,
                     ),
                     containersOfAnnouncement(
                         'Details Of The Announcement',
@@ -70,8 +83,8 @@ class _DetailsOfAnnouncementState extends State<DetailsOfAnnouncement> {
                         Color(0xffF23B5F),
                         Colors.white,
                         Colors.white,
-                            (){
-                        },SizedBox(width:0)),
+                        () {},
+                        SizedBox(width: 0)),
                     SizedBox(
                       height: 10,
                     ),
@@ -81,22 +94,30 @@ class _DetailsOfAnnouncementState extends State<DetailsOfAnnouncement> {
                         Color(0xffececec),
                         Color(0xff25334D),
                         Color(0xff25334D),
-                            (){
-                        },SizedBox(width:0)),
+                        () {},
+                        SizedBox(width: 0)),
                     SizedBox(
                       height: 10,
                     ),
-                    containersOfAnnouncement('Pictures', FontAwesomeIcons.photoFilm,
-                        Color(0xffececec), Color(0xff25334D), Color(0xff25334D),
-                            (){
-                        },SizedBox(width:0)),
+                    containersOfAnnouncement(
+                        'Pictures',
+                        FontAwesomeIcons.photoFilm,
+                        Color(0xffececec),
+                        Color(0xff25334D),
+                        Color(0xff25334D),
+                        () {},
+                        SizedBox(width: 0)),
                     SizedBox(
                       height: 10,
                     ),
-                    containersOfAnnouncement('Price', FontAwesomeIcons.dollarSign,
-                        Color(0xffececec), Color(0xff25334D), Color(0xff25334D),
-                            (){
-                        },SizedBox(width:0)),
+                    containersOfAnnouncement(
+                        'Price',
+                        FontAwesomeIcons.dollarSign,
+                        Color(0xffececec),
+                        Color(0xff25334D),
+                        Color(0xff25334D),
+                        () {},
+                        SizedBox(width: 0)),
                     SizedBox(
                       height: 10,
                     ),
@@ -105,9 +126,9 @@ class _DetailsOfAnnouncementState extends State<DetailsOfAnnouncement> {
                         FontAwesomeIcons.utensils,
                         Color(0xffececec),
                         Color(0xff25334D),
-                        Color(0xff25334D),
-                            (){
-                        },SizedBox(width:0)),
+                        Color(0xff25334D), () {
+                      Get.toNamed('/TermsAndServices');
+                    }, SizedBox(width: 0)),
                     SizedBox(
                       height: 10,
                     ),
@@ -116,9 +137,9 @@ class _DetailsOfAnnouncementState extends State<DetailsOfAnnouncement> {
                         FontAwesomeIcons.save,
                         Color(0xffececec),
                         Color(0xff25334D),
-                        Color(0xff25334D),
-                            (){
-                        },SizedBox(width:0)),
+                        Color(0xff25334D), () {
+                      Get.toNamed('/SaveAnnouncement');
+                    }, SizedBox(width: 0)),
                     SizedBox(
                       height: 15,
                     ),
@@ -128,9 +149,10 @@ class _DetailsOfAnnouncementState extends State<DetailsOfAnnouncement> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(left: 30, bottom: 15),
-                              child: Txt('Announcement Name', Color(0xff25334D), 15,
-                                  FontWeight.normal),
+                              padding:
+                                  const EdgeInsets.only(left: 30, bottom: 15),
+                              child: Txt('Announcement Name', Color(0xff25334D),
+                                  15, FontWeight.normal),
                             ),
                           ],
                         ),
@@ -180,7 +202,8 @@ class _DetailsOfAnnouncementState extends State<DetailsOfAnnouncement> {
                           setState(() {
                             itemSelected1 = value;
                           });
-                        }, false, Color(0xffF23B5F), Colors.white, Colors.white,width*0.9),
+                        }, false, Color(0xffF23B5F), Colors.white, Colors.white,
+                            width * 0.9),
                         SizedBox(
                           height: 10,
                         ),
@@ -188,16 +211,18 @@ class _DetailsOfAnnouncementState extends State<DetailsOfAnnouncement> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(left: 30, bottom: 15),
-                              child: Txt('Place Available', Color(0xff25334D), 15,
-                                  FontWeight.normal),
+                              padding:
+                                  const EdgeInsets.only(left: 30, bottom: 15),
+                              child: Txt('Place Available', Color(0xff25334D),
+                                  15, FontWeight.normal),
                             ),
                           ],
                         ),
                         Stack(
                           alignment: Alignment.centerRight,
                           children: [
-                            InputOutline(null, '', false, TextInputType.text, null),
+                            InputOutline(
+                                null, '', false, TextInputType.text, null),
                             Container(
                                 decoration: BoxDecoration(
                                     border: Border.all(width: 1),
@@ -221,9 +246,13 @@ class _DetailsOfAnnouncementState extends State<DetailsOfAnnouncement> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(left: 30, bottom: 15),
-                              child: Txt('Representative Description Of The Space',
-                                  Color(0xff25334D), 15, FontWeight.normal),
+                              padding:
+                                  const EdgeInsets.only(left: 30, bottom: 15),
+                              child: Txt(
+                                  'Representative Description Of The Space',
+                                  Color(0xff25334D),
+                                  15,
+                                  FontWeight.normal),
                             ),
                           ],
                         ),
@@ -247,7 +276,8 @@ class _DetailsOfAnnouncementState extends State<DetailsOfAnnouncement> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(left: 30, bottom: 15),
+                              padding:
+                                  const EdgeInsets.only(left: 30, bottom: 15),
                               child: Txt('Email', Color(0xff25334D), 15,
                                   FontWeight.normal),
                             ),
@@ -261,7 +291,8 @@ class _DetailsOfAnnouncementState extends State<DetailsOfAnnouncement> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(left: 30, bottom: 15),
+                              padding:
+                                  const EdgeInsets.only(left: 30, bottom: 15),
                               child: Txt('Phone', Color(0xff25334D), 15,
                                   FontWeight.normal),
                             ),
@@ -275,7 +306,8 @@ class _DetailsOfAnnouncementState extends State<DetailsOfAnnouncement> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(left: 30, bottom: 15),
+                              padding:
+                                  const EdgeInsets.only(left: 30, bottom: 15),
                               child: Txt('Mobile', Color(0xff25334D), 15,
                                   FontWeight.normal),
                             ),
@@ -289,14 +321,18 @@ class _DetailsOfAnnouncementState extends State<DetailsOfAnnouncement> {
               ),
             ),
             Positioned(
-              right: width*0.05,
-              bottom:10,
-              child: MainBtn(Txt('Next Step',Colors.white,20,FontWeight.normal),width*0.4,
-                  height*0.05,5,Color(0xffF23B5F), Color(0xffF23B5F),(){
+              right: width * 0.05,
+              bottom: 10,
+              child: MainBtn(
+                  Txt('Next Step', Colors.white, 20, FontWeight.normal),
+                  width * 0.4,
+                  height * 0.05,
+                  5,
+                  Color(0xffF23B5F),
+                  Color(0xffF23B5F), () {
                 Get.toNamed("/NextStep");
-                  }),
+              }),
             ),
-
           ],
         ));
   }
