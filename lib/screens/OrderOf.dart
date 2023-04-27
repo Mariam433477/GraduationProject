@@ -13,19 +13,20 @@ class OrderOf extends StatefulWidget {
 }
 
 class _OrderOfState extends State<OrderOf> {
-  bool wvalue1 = true;
-  bool fvalue1 = true;
-  bool kvalue1 = true;
-  bool bvalue1 = true;
-  bool rvalue1 = true;
-  bool hvalue1 = true;
-  bool mvalue1 = true;
-  bool cvalue1 = true;
-  double _valslider = 60.0;
+  List type = [
+    {"title": 'Wifi', "checked": true},
+    {"title": 'Free Breakfast', "checked": true},
+    {"title": 'Kitchen', "checked": true},
+    {"title": 'BathRoom', "checked": true},
+    {"title": 'Resturant', "checked": true},
+    {"title": 'Heater', "checked": true},
+    {"title": 'Washing Machine', "checked": true},
+    {"title": 'Cooker', "checked": true},
+  ];
+  double currentValue = 60.0;
   int _value = 1;
   @override
   Widget build(BuildContext context) {
-    var valslider = _valslider;
     return Scaffold(
       appBar: AppBar(
         leading: GestureDetector(
@@ -139,10 +140,10 @@ class _OrderOfState extends State<OrderOf> {
                   max: 600.0,
                   activeColor: Color(0xffF23B5F),
                   inactiveColor: Color(0xffF23B5F),
-                  value: _valslider,
+                  value: currentValue,
                   onChanged: (value) {
                     setState(() {
-                      _valslider = value;
+                      currentValue = value;
                     });
                   }),
               Row(
@@ -165,8 +166,8 @@ class _OrderOfState extends State<OrderOf> {
                           border: Border.all(color: Colors.grey, width: 1),
                           borderRadius: BorderRadius.circular(4),
                         ),
-                        child: const Center(
-                          child: Text('60.0'),
+                        child: Center(
+                          child: Text('${currentValue.toString()}\$'),
                         ),
                       ),
                     ],
@@ -212,78 +213,22 @@ class _OrderOfState extends State<OrderOf> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Check(
-                    'Wifi',
-                    wvalue1,
-                    () {
-                      setState(() {
-                        wvalue1 = !wvalue1;
-                      });
-                    },
-                  ),
-                  Check(
-                    'Free Breakfast',
-                    fvalue1,
-                    () {
-                      setState(() {
-                        fvalue1 = !fvalue1;
-                      });
-                    },
-                  ),
-                  Check(
-                    'Kitchen',
-                    kvalue1,
-                    () {
-                      setState(() {
-                        kvalue1 = !kvalue1;
-                      });
-                    },
-                  ),
-                  Check(
-                    'BathRoom',
-                    bvalue1,
-                    () {
-                      setState(() {
-                        bvalue1 = !bvalue1;
-                      });
-                    },
-                  ),
-                  Check(
-                    'Resturant',
-                    rvalue1,
-                    () {
-                      setState(() {
-                        rvalue1 = !rvalue1;
-                      });
-                    },
-                  ),
-                  Check(
-                    'Heater',
-                    hvalue1,
-                    () {
-                      setState(() {
-                        hvalue1 = !hvalue1;
-                      });
-                    },
-                  ),
-                  Check(
-                    'Washing Machine',
-                    mvalue1,
-                    () {
-                      setState(() {
-                        mvalue1 = !mvalue1;
-                      });
-                    },
-                  ),
-                  Check(
-                    'Cooker',
-                    cvalue1,
-                    () {
-                      setState(() {
-                        cvalue1 = !cvalue1;
-                      });
-                    },
-                  ),
+                  SizedBox(
+                      width: width * 0.9,
+                      height: 300,
+                      child: ListView.builder(
+                          itemCount: type.length,
+                          itemBuilder: (context, index) {
+                            return Check(
+                                type[index]['title'], type[index]['checked'],
+                                () {
+                              print(type[index]['checked']);
+                              setState(() {
+                                type[index]['checked'] =
+                                    !type[index]['checked'];
+                              });
+                            });
+                          })),
                 ],
               ),
             ],

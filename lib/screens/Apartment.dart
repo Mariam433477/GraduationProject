@@ -59,6 +59,7 @@ class _ApartmentState extends State<Apartment> {
                   Stack(
                     children: [
                       Container(
+                        margin: EdgeInsets.only(left: 15, right: 10),
                         width: width * 0.9,
                         decoration: BoxDecoration(
                           border: Border.all(
@@ -76,6 +77,7 @@ class _ApartmentState extends State<Apartment> {
                         left: 30,
                         child: Center(
                           child: Container(
+                            margin: EdgeInsets.only(left: 15, right: 10),
                             padding: EdgeInsets.only(left: 14, top: 5),
                             width: 60,
                             height: 30,
@@ -91,6 +93,7 @@ class _ApartmentState extends State<Apartment> {
                     height: 5,
                   ),
                   Container(
+                    margin: EdgeInsets.only(left: 15, right: 10),
                     width: width * 0.9,
                     child: Column(
                       children: [
@@ -105,7 +108,7 @@ class _ApartmentState extends State<Apartment> {
                                 child: Txt(
                                     'ثلاث غرف للايجار ببنها 24متر الدور الاول علوي',
                                     Color(0xffF23B5F),
-                                    16,
+                                    13,
                                     FontWeight.normal),
                               ),
                             ),
@@ -142,6 +145,7 @@ class _ApartmentState extends State<Apartment> {
                     height: 7,
                   ),
                   Container(
+                    margin: EdgeInsets.only(left: 15, right: 10),
                     width: width * 0.9,
                     child: Column(
                       children: [
@@ -223,6 +227,7 @@ class _ApartmentState extends State<Apartment> {
                     height: 8,
                   ),
                   Container(
+                    margin: EdgeInsets.only(left: 15, right: 10),
                     width: width * 0.9,
                     child: Column(
                       children: [
@@ -247,7 +252,6 @@ class _ApartmentState extends State<Apartment> {
                           'Ketchen',
                           Color(0xffF23B5F),
                           FontAwesomeIcons.kickstarter,
-                          
                         ),
                         Divider(color: Color(0xffF23B5F)),
                         Terms(
@@ -276,6 +280,7 @@ class _ApartmentState extends State<Apartment> {
                     height: 8,
                   ),
                   Container(
+                    margin: EdgeInsets.only(left: 15, right: 10),
                     width: width * 0.9,
                     child: Column(
                       children: [
@@ -294,19 +299,14 @@ class _ApartmentState extends State<Apartment> {
                           '$gender+ Only',
                           Color(0xffF23B5F),
                           FontAwesomeIcons.person,
-                          
                         ),
                         Divider(color: Color(0xffF23B5F)),
-                        Terms(
-                            'No Pets',
-                            Color(0xffF23B5F),
-                            Icons.pets),
+                        Terms('No Pets', Color(0xffF23B5F), Icons.pets),
                         Divider(color: Color(0xffF23B5F)),
                         Terms(
                           'No Smooking',
                           Color(0xffF23B5F),
-                          
-                          Icons.no_meals;
+                          Icons.no_meals,
                         ),
                         Divider(color: Color(0xffF23B5F)),
                         Terms(
@@ -323,6 +323,7 @@ class _ApartmentState extends State<Apartment> {
                     height: 8,
                   ),
                   Container(
+                    margin: EdgeInsets.only(left: 15, right: 10),
                     width: width * 0.9,
                     child: Column(
                       children: [
@@ -371,48 +372,52 @@ class _ApartmentState extends State<Apartment> {
                   SizedBox(
                     height: 8,
                   ),
-                  Container(
-                    width: width * 0.9,
-                    // height: height * 0.5,
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Txt('Location', Colors.blueGrey, 16,
-                                FontWeight.normal),
-                            Txt(' ', Colors.white, 0, FontWeight.normal)
-                          ],
-                        ),
-                        SizedBox(
-                          height: 8,
-                        ),
-                        GoogleMap(
-                          initialCameraPosition: _kInitialPosition,
-                          onMapCreated: (h) {
-                            print(
-                                "===============================================");
-                            print("MapCreated $h");
-                          },
-                          onTap: (LatLng postion) {
-                            // if(!read) {
-                            setState(() {
-                              save = true;
-                              lat = postion.latitude;
-                              long = postion.longitude;
-                              // });
-                              print("lat $lat , long $long");
-                            });
-                          },
-                        ),
-                        Divider(color: Color(0xffF23B5F)),
-                      ],
+                  Column(children: [
+                    Container(
+                      margin: EdgeInsets.only(left: 15, right: 10),
+                      width: width * 0.9,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Txt('Location', Colors.blueGrey, 16,
+                              FontWeight.normal),
+                          Txt(' ', Colors.white, 0, FontWeight.normal)
+                        ],
+                      ),
                     ),
-                  ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      color: Color(0xffF23B5F),
+                      width: width,
+                      height: 300,
+                      child: GoogleMap(
+                        initialCameraPosition: _kInitialPosition,
+                        onMapCreated: (h) {
+                          print(
+                              "===============================================");
+                          print("MapCreated $h");
+                        },
+                        onTap: (LatLng postion) {
+                          // if(!read) {
+                          setState(() {
+                            save = true;
+                            lat = postion.latitude;
+                            long = postion.longitude;
+                            // });
+                            print("lat $lat , long $long");
+                          });
+                        },
+                      ),
+                    ),
+                    Divider(color: Color(0xffF23B5F)),
+                  ]),
                   SizedBox(
                     height: 10,
                   ),
                   Container(
+                    margin: EdgeInsets.only(left: 15, right: 10),
                     width: width * 0.9,
                     child: Row(
                       children: [
@@ -438,7 +443,7 @@ class _ApartmentState extends State<Apartment> {
           ),
           Center(
             child: Container(
-              margin: EdgeInsets.only(top: height * 0.8),
+              margin: EdgeInsets.only(top: height * 0.8, left: 15, right: 10),
               width: width * 0.9,
               height: 50,
               decoration: BoxDecoration(

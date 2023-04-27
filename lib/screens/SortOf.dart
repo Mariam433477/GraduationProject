@@ -10,16 +10,6 @@ class SortOf extends StatefulWidget {
 }
 
 class _SortOfState extends State<SortOf> {
-  // List<String> type = [
-  //   'Wifi',
-  //   'Free Breakfast',
-  //   'Kitchen',
-  //   'BathRoom',
-  //   'Resturant',
-  //   'Heater',
-  //   'Washing Machine',
-  //   'Cooker',
-  // ];
   List type = [
     {"title": 'Wifi', "checked": true},
     {"title": 'Free Breakfast', "checked": true},
@@ -242,7 +232,6 @@ class _SortOfState extends State<SortOf> {
                       child: ListView.builder(
                           itemCount: type.length,
                           itemBuilder: (context, index) {
-                            // bool checked=type[index]['checked']??false;
                             return Check(
                                 type[index]['title'], type[index]['checked'],
                                 () {
