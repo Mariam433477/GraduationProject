@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -58,18 +59,24 @@ class _ApartmentState extends State<Apartment> {
                 children: [
                   Stack(
                     children: [
-                      Container(
-                        margin: EdgeInsets.only(left: 15, right: 10),
-                        width: width * 0.9,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            width: 1,
-                            color: Color(0xffF23B5F),
-                          ),
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        child: Image.asset(
-                          'assets/images/house-kitchen2.jpg',
+                      CarouselSlider(
+                        items: [
+                          OfferImage("assets/images/bedroom-3778695__340.jpg"),
+                          OfferImage(
+                              "assets/images/living-room-1835923__340.jpg"),
+                          OfferImage("assets/images/library-5219747__340.jpg"),
+                          OfferImage(
+                              "assets/images/living-room-2732939__340.jpg"),
+                        ],
+                        options: CarouselOptions(
+                          viewportFraction: 0.97,
+                          autoPlayAnimationDuration:
+                              Duration(milliseconds: 300),
+                          onPageChanged: (index, reason) {
+                            setState(() {
+                              v1 = index;
+                            });
+                          },
                         ),
                       ),
                       Positioned(
@@ -82,8 +89,8 @@ class _ApartmentState extends State<Apartment> {
                             width: 60,
                             height: 30,
                             color: Color(0xffF23B5F),
-                            child: Txt(
-                                '$v1/$v2', Colors.white, 18, FontWeight.bold),
+                            child: Txt('${++v1}/$v2', Colors.white, 18,
+                                FontWeight.bold),
                           ),
                         ),
                       ),
@@ -103,13 +110,16 @@ class _ApartmentState extends State<Apartment> {
                             Starts(rate, false, saveRating),
                             SizedBox(
                               width: width * 0.9 - 100,
-                              child: SingleChildScrollView(
-                                scrollDirection: Axis.horizontal,
-                                child: Txt(
-                                    'ثلاث غرف للايجار ببنها 24متر الدور الاول علوي',
-                                    Color(0xffF23B5F),
-                                    13,
-                                    FontWeight.normal),
+                              child: Directionality(
+                                textDirection: TextDirection.rtl,
+                                child: SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Txt(
+                                      'ثلاث غرف للايجار ببنها 24متر الدور الاول علوي',
+                                      Color(0xffF23B5F),
+                                      13,
+                                      FontWeight.normal),
+                                ),
                               ),
                             ),
                           ],

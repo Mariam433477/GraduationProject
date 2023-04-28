@@ -12,12 +12,12 @@ class SortOf extends StatefulWidget {
 class _SortOfState extends State<SortOf> {
   List type = [
     {"title": 'Wifi', "checked": true},
-    {"title": 'Free Breakfast', "checked": true},
+    {"title": 'Free Breakfast', "checked": false},
     {"title": 'Kitchen', "checked": true},
-    {"title": 'BathRoom', "checked": true},
+    {"title": 'BathRoom', "checked": false},
     {"title": 'Resturant', "checked": true},
-    {"title": 'Heater', "checked": true},
-    {"title": 'Washing Machine', "checked": true},
+    {"title": 'Heater', "checked": false},
+    {"title": 'Washing Machine', "checked": false},
     {"title": 'Cooker', "checked": true},
   ];
   bool value = true;
@@ -232,6 +232,7 @@ class _SortOfState extends State<SortOf> {
                       child: ListView.builder(
                           itemCount: type.length,
                           itemBuilder: (context, index) {
+                            // bool checked=type[index]['checked']??false;
                             return Check(
                                 type[index]['title'], type[index]['checked'],
                                 () {

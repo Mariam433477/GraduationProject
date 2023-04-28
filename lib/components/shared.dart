@@ -166,6 +166,24 @@ Widget CallBtn(String text, var icon, Color color, Color bgColor, double w,
   );
 }
 
+Widget OfferImage(var imageUrl) {
+  return Builder(builder: (BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      margin: EdgeInsets.symmetric(
+        horizontal: 10,
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(8.0),
+        child: Image.asset(
+          imageUrl,
+          fit: BoxFit.fill,
+        ),
+      ),
+    );
+  });
+}
+
 Widget Copyright() {
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
@@ -233,9 +251,9 @@ Widget label(String txt, Color color, double padd) {
 Widget Check(String txt, bool val, change) {
   return ListTile(
     onTap: change,
-    horizontalTitleGap: 0,
+    horizontalTitleGap: 10,
     leading: Icon(
-      val ? Icons.check_box : Icons.check_box_sharp,
+      val ? Icons.check_box : Icons.check_box_outline_blank,
       color: Colors.pinkAccent,
     ),
     title: Txt(txt, Colors.black, 15.0, FontWeight.w500),
