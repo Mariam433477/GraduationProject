@@ -506,7 +506,7 @@ class _TermsAndServicesState extends State<TermsAndServices> {
                 5,
                 Color(0xffF23B5F),
                 Color(0xffF23B5F), () {
-              Get.toNamed("/TermsAndServices");
+              Get.toNamed("/SaveAnnouncement");
             }),
           ),
           Positioned(
