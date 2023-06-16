@@ -2,13 +2,37 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:sakenny/controller/create_ads_controller.dart';
+import 'package:sakenny/model/create_ads_model.dart';
 
+import '../api/CreateAdsApi.dart';
 import '../components/detailsAnnouncement.dart';
 import '../components/home.dart';
 import '../components/shared.dart';
 
 class TermsAndServices extends StatefulWidget {
-  const TermsAndServices({Key? key}) : super(key: key);
+  const TermsAndServices(
+      {Key? key,
+      this.email,
+      this.image,
+      this.imageDescription,
+      this.announcement,
+      this.location,
+      this.phone,
+      this.description,
+      this.perPrice,
+      this.price})
+      : super(key: key);
+  final String? description;
+  final String? phone;
+  final String? image;
+  final String? imageDescription;
+  final String? email;
+  final String? announcement;
+  final String? price;
+  final String? perPrice;
+  final LatLng? location;
 
   @override
   State<TermsAndServices> createState() => _TermsAndServicesState();
@@ -19,26 +43,46 @@ class _TermsAndServicesState extends State<TermsAndServices> {
     'Female',
     'Male',
   ];
-  String itemSelected1 = 'Female';
 
+  String itemSelected1 = 'Female';
+  String listSelectedText = '';
+  String listSelectedTermText = '';
+  List<String> listSelected = [
+    'WiFi',
+    'Kitchen',
+    'Bathroom',
+    'Air Conditioner',
+    'Heater',
+    'Washing Machine',
+    'Cooker',
+    'Balcony',
+    'Refrigerator',
+    'TV',
+    'Microwave',
+    'Elevator'
+  ];
+  List<String> listSelectedTerms = [
+    'No Pets',
+    'No Smoking',
+    'Share Bills',
+    'Share Cleaning Works'
+  ];
   List<String> List2 = ['Egypt', 'china', 'Amercia'];
   String itemSelected2 = 'Egypt';
-  bool wvalue1 = false;
-  bool fvalue1 = false;
-  bool kvalue1 = false;
-  bool bvalue1 = false;
-  bool rvalue1 = false;
-  bool hvalue1 = false;
-  bool mvalue1 = false;
-  bool cvalue1 = false;
-  bool lvalue1 = false;
-  bool dvalue1 = false;
-  bool npvalue1 = false;
-  bool nsvalue1 = false;
-  bool scbvalue1 = false;
-  bool scwvalue1 = false;
+  List<bool>? wvalue1;
+  List<bool>? wvalue2;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    wvalue1 = List.filled(listSelected.length, false);
+    wvalue2 = List.filled(listSelectedTerms.length, false);
+  }
+
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(CreateAdsController());
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -83,10 +127,10 @@ class _TermsAndServicesState extends State<TermsAndServices> {
           )
         ],
       ),
-      body: Stack(
-        children: [
-          SingleChildScrollView(
-            child: Center(
+      body: SingleChildScrollView(
+        child: Stack(
+          children: [
+            Center(
                 child: Column(children: [
               SizedBox(
                 height: 40,
@@ -237,76 +281,89 @@ class _TermsAndServicesState extends State<TermsAndServices> {
               //   height: 10.0,
               // ),
               Container(
-                padding: EdgeInsets.only(left: 10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Check(
-                      'Wifi',
-                      wvalue1,
-                      () {
-                        setState(() {
-                          wvalue1 = !wvalue1;
-                        });
-                      },
-                    ),
-                    Check(
-                      'Kitchen',
-                      kvalue1,
-                      () {
-                        setState(() {
-                          kvalue1 = !kvalue1;
-                        });
-                      },
-                    ),
-                    Check(
-                      'BathRoom',
-                      bvalue1,
-                      () {
-                        setState(() {
-                          bvalue1 = !bvalue1;
-                        });
-                      },
-                    ),
-                    Check(
-                      'Resturant',
-                      rvalue1,
-                      () {
-                        setState(() {
-                          rvalue1 = !rvalue1;
-                        });
-                      },
-                    ),
-                    Check(
-                      'Heater',
-                      hvalue1,
-                      () {
-                        setState(() {
-                          hvalue1 = !hvalue1;
-                        });
-                      },
-                    ),
-                    Check(
-                      'Washing Machine',
-                      mvalue1,
-                      () {
-                        setState(() {
-                          mvalue1 = !mvalue1;
-                        });
-                      },
-                    ),
-                    Check(
-                      'Cooker',
-                      cvalue1,
-                      () {
-                        setState(() {
-                          cvalue1 = !cvalue1;
-                        });
-                      },
-                    ),
-                  ],
-                ),
-              ),
+                  padding: EdgeInsets.only(left: 10),
+                  child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: listSelected.length,
+                      physics: BouncingScrollPhysics(),
+                      itemBuilder: (_, index) => CheckboxListTile(
+                          title: Text(listSelected[index]),
+                          value: wvalue1![index],
+                          onChanged: (value) {
+                            setState(() {
+                              listSelectedText = listSelected[index];
+                              wvalue1![index] = value!;
+                            });
+                          }))
+                  // Column(
+                  //   crossAxisAlignment: CrossAxisAlignment.start,
+                  //   children: [
+                  //     Check(
+                  //       'Wifi',
+                  //       wvalue1,
+                  //       () {
+                  //         setState(() {
+                  //           wvalue1 = !wvalue1;
+                  //         });
+                  //       },
+                  //     ),
+                  //     Check(
+                  //       'Kitchen',
+                  //       kvalue1,
+                  //       () {
+                  //         setState(() {
+                  //           kvalue1 = !kvalue1;
+                  //         });
+                  //       },
+                  //     ),
+                  //     Check(
+                  //       'BathRoom',
+                  //       bvalue1,
+                  //       () {
+                  //         setState(() {
+                  //           bvalue1 = !bvalue1;
+                  //         });
+                  //       },
+                  //     ),
+                  //     Check(
+                  //       'Refrigerator',
+                  //       rvalue1,
+                  //       () {
+                  //         setState(() {
+                  //           rvalue1 = !rvalue1;
+                  //         });
+                  //       },
+                  //     ),
+                  //     Check(
+                  //       'TV',
+                  //       hvalue1,
+                  //       () {
+                  //         setState(() {
+                  //           hvalue1 = !hvalue1;
+                  //         });
+                  //       },
+                  //     ),
+                  //     Check(
+                  //       'Microwave',
+                  //       mvalue1,
+                  //       () {
+                  //         setState(() {
+                  //           mvalue1 = !mvalue1;
+                  //         });
+                  //       },
+                  //     ),
+                  //     Check(
+                  //       'Elevator',
+                  //       cvalue1,
+                  //       () {
+                  //         setState(() {
+                  //           cvalue1 = !cvalue1;
+                  //         });
+                  //       },
+                  //     ),
+                  //   ],
+                  // ),
+                  ),
               SizedBox(
                 height: 20.0,
               ),
@@ -447,81 +504,144 @@ class _TermsAndServicesState extends State<TermsAndServices> {
                 height: 10.0,
               ),
               Container(
-                padding: EdgeInsets.only(left: 10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Check(
-                      'No Pets',
-                      fvalue1,
-                      () {
-                        setState(() {
-                          npvalue1 = !npvalue1;
-                        });
-                      },
-                    ),
-                    Check(
-                      'No Smoking',
-                      kvalue1,
-                      () {
-                        setState(() {
-                          nsvalue1 = !nsvalue1;
-                        });
-                      },
-                    ),
-                    Check(
-                      'Share Cleaning Bill',
-                      bvalue1,
-                      () {
-                        setState(() {
-                          scbvalue1 = !scbvalue1;
-                        });
-                      },
-                    ),
-                    Check(
-                      'Share Cleaning Works',
-                      bvalue1,
-                      () {
-                        setState(() {
-                          scwvalue1 = !scwvalue1;
-                        });
-                      },
-                    ),
-                  ],
-                ),
-              ),
+                  padding: EdgeInsets.only(left: 10),
+                  child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: listSelectedTerms.length,
+                      physics: BouncingScrollPhysics(),
+                      itemBuilder: (_, index) => CheckboxListTile(
+                          title: Text(listSelectedTerms[index]),
+                          value: wvalue2![index],
+                          onChanged: (value) {
+                            setState(() {
+                              listSelectedTermText =
+                              listSelectedTerms[index];
+                              wvalue2![index] = value!;
+                            });
+                          }))
+                  // Column(
+                  //   crossAxisAlignment: CrossAxisAlignment.start,
+                  //   children: [
+                  //     Check(
+                  //       'Wifi',
+                  //       wvalue1,
+                  //       () {
+                  //         setState(() {
+                  //           wvalue1 = !wvalue1;
+                  //         });
+                  //       },
+                  //     ),
+                  //     Check(
+                  //       'Kitchen',
+                  //       kvalue1,
+                  //       () {
+                  //         setState(() {
+                  //           kvalue1 = !kvalue1;
+                  //         });
+                  //       },
+                  //     ),
+                  //     Check(
+                  //       'BathRoom',
+                  //       bvalue1,
+                  //       () {
+                  //         setState(() {
+                  //           bvalue1 = !bvalue1;
+                  //         });
+                  //       },
+                  //     ),
+                  //     Check(
+                  //       'Refrigerator',
+                  //       rvalue1,
+                  //       () {
+                  //         setState(() {
+                  //           rvalue1 = !rvalue1;
+                  //         });
+                  //       },
+                  //     ),
+                  //     Check(
+                  //       'TV',
+                  //       hvalue1,
+                  //       () {
+                  //         setState(() {
+                  //           hvalue1 = !hvalue1;
+                  //         });
+                  //       },
+                  //     ),
+                  //     Check(
+                  //       'Microwave',
+                  //       mvalue1,
+                  //       () {
+                  //         setState(() {
+                  //           mvalue1 = !mvalue1;
+                  //         });
+                  //       },
+                  //     ),
+                  //     Check(
+                  //       'Elevator',
+                  //       cvalue1,
+                  //       () {
+                  //         setState(() {
+                  //           cvalue1 = !cvalue1;
+                  //         });
+                  //       },
+                  //     ),
+                  //   ],
+                  // ),
+                  ),
               SizedBox(
                 height: 50,
               ),
             ])),
-          ),
-          Positioned(
-            right: width * 0.04,
-            bottom: 10,
-            child: MainBtn(
-                Txt('Next Step', Colors.white, 20, FontWeight.normal),
-                width * 0.4,
-                height * 0.05,
-                5,
-                Color(0xffF23B5F),
-                Color(0xffF23B5F), () {
-              Get.toNamed("/SaveAnnouncement");
-            }),
-          ),
-          Positioned(
-            right: width * 0.55,
-            bottom: 10,
-            child: MainBtn(
-                Txt('Previous Step', Color(0xffF23B5F), 20, FontWeight.normal),
-                width * 0.4,
-                height * 0.05,
-                5,
-                Colors.white,
-                Colors.white, () {
-              Get.back();
-            }),
-          ),
-        ],
+            Positioned(
+              right: width * 0.04,
+              bottom: 10,
+              child: MainBtn(
+                  Txt('Next Step', Colors.white, 20, FontWeight.normal),
+                  width * 0.4,
+                  height * 0.05,
+                  5,
+                  Color(0xffF23B5F),
+                  Color(0xffF23B5F), () async {
+                    print(widget.location!.latitude.toString(),);
+                    print(widget.location!.latitude.toString(),);
+                  // await  controller.decodeLatLong(latLng: LatLng(widget.location!.latitude,
+                  //       widget.location!.latitude));
+                controller.sendData(
+                    createAdsModel: CreateAdsModel(
+                        email: widget.email,
+                        lat: widget.location!.latitude.toString(),
+                        lng: widget.location!.longitude.toString(),
+                        description: widget.description,
+                        city: controller.city.value,
+                        governorate: controller.governate.value,
+                        gender: "true",
+                        features: listSelectedText,
+                        terms: listSelectedTermText,
+                        images: widget.image,
+                        imagesDescription: widget.imageDescription,
+                        phoneNumber: widget.phone,
+                        price: widget.price,
+                        pricePer: widget.perPrice,
+                        title: "",
+                        spaceType: ""));
+              }),
+            ),
+            Positioned(
+              right: width * 0.55,
+              bottom: 10,
+              child: MainBtn(
+                  Txt('Previous Step', Color(0xffF23B5F), 20,
+                      FontWeight.normal),
+                  width * 0.4,
+                  height * 0.05,
+                  5,
+                  Colors.white,
+                  Colors.white, () {
+                Get.back();
+              }),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -50,6 +50,7 @@ dependencies:
   twitter_login: ^4.4.0
   image_picker:
   responsive_framework: ^1.0.0
+  geocoder2: ^1.4.0
 
 dev_dependencies:
   flutter_test:

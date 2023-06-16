@@ -18,8 +18,9 @@ CreateAdsApi() async{
     'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.MA.vAOgHl1sYlrdF_ZxFIdr0awsBzbDmuX3mT0vJVXrKhM'
   };
   var request = http.MultipartRequest('POST', Uri.parse('https://sakkeny.onrender.com/ads/create'));
-  request.fields.addAll({
-    'title': Title,
+  request.fields.addAll(
+      {
+    'title': "Title",
     'space_type': 'flat',
     'description': 'blaBlaBlaBlaBla',
     'price': '1500',
@@ -28,13 +29,15 @@ CreateAdsApi() async{
     'gender': 'true',
     'features': 'Refrigerator-Washing Machine-TV',
     'price_per': 'day',
-    'phone_number': phoneNumber,
-    'images_description': ImageDescription,
-    'email': emailAds,
-    'lat': loc1.latitude.toString(),
-    'lng': loc1.longitude.toString(),
-    'terms': 'Share Bills-No Pets'
-  });
+    'phone_number': "phoneNumber",
+    'images_description': "ImageDescription",
+    'email': "emailAds",
+    'lat': "loc1.latitude.toString()",
+    'lng': "loc1.longitude.toString()",
+    'terms': 'Share Bills-No Pets',
+     "images":""
+  }
+  );
   request.files.add(await http.MultipartFile.fromPath('images', imageXFiLe?.path??""));
   //request.files.add(await http.MultipartFile.fromPath('images', '/C:/Users/20106/Downloads/carbon (1).png'));
   request.headers.addAll(headers);
