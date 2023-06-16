@@ -40,6 +40,16 @@ dependencies:
   dropdown_search: ^5.0.3
   flutter_rating_bar: ^4.0.1
   carousel_slider: ^4.2.1
+  http: ^0.13.6
+  dio:
+  shared_preferences: ^2.1.1
+  firebase_auth: ^4.6.1
+  firebase_core: ^2.13.0
+  google_sign_in:
+  flutter_facebook_auth:
+  twitter_login: ^4.4.0
+  image_picker:
+  responsive_framework: ^1.0.0
 
 dev_dependencies:
   flutter_test:

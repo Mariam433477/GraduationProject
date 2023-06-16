@@ -1,6 +1,9 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:responsive_framework/breakpoint.dart';
+import 'package:responsive_framework/responsive_breakpoints.dart';
 import 'package:sakenny/screens/AddAnnouncement.dart';
 import 'package:sakenny/screens/Apartment.dart';
 import 'package:sakenny/screens/ChangePassword.dart';
@@ -25,7 +28,10 @@ import 'package:sakenny/screens/SplashScreen.dart';
 import 'package:sakenny/screens/TermsAndServices.dart';
 import 'package:sakenny/screens/language.dart';
 
-void main() {
+void main() async {
+  //store in shared Preferences
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const sakenny());
 }
 
@@ -41,6 +47,16 @@ class _sakennyState extends State<sakenny> {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      builder: (context, child) => ResponsiveBreakpoints.builder(
+        child: child!,
+
+        breakpoints: [
+          const Breakpoint(start: 0, end: 450, name: MOBILE),
+          const Breakpoint(start: 451, end: 800, name: TABLET),
+          const Breakpoint(start: 801, end: 1920, name: DESKTOP),
+          const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
+        ],
+      ),
       home: SplashScreen(),
       getPages: [
         GetPage(name: '/SplashScreen', page: () => SplashScreen()),

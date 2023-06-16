@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import '../api/CreateAdsApi.dart';
 import '../components/shared.dart';
 
 class LocationMap extends StatefulWidget {
@@ -13,33 +14,25 @@ class LocationMap extends StatefulWidget {
 }
 
 class _LocationMapState extends State<LocationMap> {
+  GoogleMapController? mapController; //contrller for Google map
+  Set<Marker> markers = Set(); //markers for google map
+
   bool online = false, read = true, save = false;
 
-  double lat = 0.0, long = 0.0;
-  var action;
+
+  @override
   void initState() {
-    setState(() {
-      //   read=Get.arguments[0];
-      //   lat=Get.arguments[1];
-      //   long=Get.arguments[2];
-      //   action=Get.arguments[3];
-    });
+
     super.initState();
   }
 
+
+
+
   @override
   Widget build(BuildContext context) {
-    // if(long<1){
-    //cairo 30.033333, 31.233334.
-    lat = 24.774265;
-    long = 46.738586;
-    // }
-    final LatLng _kMapCenter = LatLng(lat, long);
-    final CameraPosition _kInitialPosition =
-        CameraPosition(target: _kMapCenter, zoom: 11.0, tilt: 0, bearing: 0);
-
-    return Scaffold(
-      appBar: AppBar(
+    return  Scaffold(
+        appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Color(0xffE0E0E0),
         elevation: 0,
@@ -82,26 +75,28 @@ class _LocationMapState extends State<LocationMap> {
           )
         ],
       ),
-      body: Stack(
-        children: [
-          GoogleMap(
-            initialCameraPosition: _kInitialPosition,
-            onMapCreated: (h) {
-              print("===============================================");
-              print("MapCreated $h");
-            },
-            onTap: (LatLng postion) {
-              // if(!read) {
-              setState(() {
-                save = true;
-                lat = postion.latitude;
-                long = postion.longitude;
-                // });
-                print("lat $lat , long $long");
-              });
-            },
-          ),
-          Positioned(
+
+        body: Stack(
+          children: [
+            GoogleMap( //Map widget from google_maps_flutter package
+              onTap: (argument) {
+                loc1=argument;
+                print(loc1);
+              },
+              zoomGesturesEnabled: true, //enable Zoom in, out on map
+              initialCameraPosition: CameraPosition( //innital position in map
+                target: loc1, //initial position
+                zoom: 14.0, //initial zoom level
+              ),
+              markers: markers, //markers to show on map
+              mapType: MapType.normal, //map type
+              onMapCreated: (controller) { //method called when map is created
+                setState(() {
+                  mapController = controller;
+                });
+              },
+            ),
+                 Positioned(
               left: 10,
               bottom: 30,
               child: read
@@ -149,8 +144,10 @@ class _LocationMapState extends State<LocationMap> {
               Get.back();
             }),
           ),
-        ],
-      ),
+
+          ],
+        )
     );
   }
+
 }

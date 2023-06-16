@@ -159,7 +159,7 @@ class _PriceState extends State<Price> {
                 Padding(
                   padding: const EdgeInsets.only(left: 30, bottom: 15),
                   child: Txt(
-                      'Space type', Color(0xff25334D), 15, FontWeight.normal),
+                      'Price Per', Color(0xff25334D), 15, FontWeight.normal),
                 ),
               ],
             ),

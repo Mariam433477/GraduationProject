@@ -261,7 +261,7 @@ Widget Check(String txt, bool val, change) {
 }
 
 Widget Input(
-    var control, String hint, bool pass, TextInputType type, var suffix) {
+    var control, String hint, bool pass, TextInputType type, var suffix,{ ValueChanged<String>? onChanged}) {
   // var border=OutlineInputBorder(borderSide: BorderSide(width: 3, color: Colors.white));
   return Container(
     width: width * 0.9,
@@ -272,6 +272,7 @@ Widget Input(
       padding: const EdgeInsets.only(left: 15),
       child: TextField(
           controller: control,
+          onChanged: onChanged,
           obscureText: pass,
           keyboardType: type,
           style: TxtStyle("", const Color(0xff8b8d9e), 15, FontWeight.w500),
@@ -338,8 +339,8 @@ Widget Inputunderline(
           suffixIcon: suffix,
           border: border,
           focusedBorder: border,
-          label: Txt(label, Color(0xff25334D), 20, FontWeight.bold),
-          labelStyle:
+          hintText: label,
+          hintStyle:
               TxtStyle("", const Color(0xff8b8d9e), 15, FontWeight.bold),
         )),
   );

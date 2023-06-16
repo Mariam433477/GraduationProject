@@ -89,7 +89,7 @@ class _EditProfileState extends State<EditProfile> {
                       icon: FaIcon(FontAwesomeIcons.pen,color:Color(0xff25334D),size: 18,))),
                   Inputunderline(authController.email, 'E-mail', false, TextInputType.text, IconButton(onPressed:(){},
                       icon: FaIcon(FontAwesomeIcons.pen,color:Color(0xff25334D),size: 18,))),
-                  Inputunderline(authController.email, 'phone', false, TextInputType.text, IconButton(onPressed:(){},
+                  Inputunderline(authController.phone, 'phone', false, TextInputType.text, IconButton(onPressed:(){},
                       icon: FaIcon(FontAwesomeIcons.pen,color:Color(0xff25334D),size: 18,))),
                 ],
               ),
@@ -97,7 +97,9 @@ class _EditProfileState extends State<EditProfile> {
             Container(height: height*0.2,
               alignment: Alignment.bottomCenter,
               child: MainBtn(Txt('Save',Colors.white,20,FontWeight.bold),width*0.9,
-                  height*0.07,10,Color(0xffF23B5F), Color(0xffF23B5F),(){}),
+                  height*0.07,10,Color(0xffF23B5F), Color(0xffF23B5F),(){
+                    authController.editprofile();
+                  }),
             ),
           ],
         ),

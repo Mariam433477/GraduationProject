@@ -16,7 +16,7 @@ class _ChangePasswordState extends State<ChangePassword> {
   bool passwordObscured =true;
   bool passwordObscured1=true;
   bool passwordObscured2=true;
-
+  String msg="";
   AuthController authController=Get.put(AuthController());
   @override
   Widget build(BuildContext context) {
@@ -53,7 +53,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                     ),
                   ),),
                   SizedBox(height: 10,),
-                  Input(authController.confirmPass, 'Confirm New Password', passwordObscured1, TextInputType.text, IconButton(
+                  Input(authController.NewPass, 'Rewrite New Password', passwordObscured1, TextInputType.text, IconButton(
                     onPressed: (){
                       setState(() {
                         passwordObscured1=!passwordObscured1;
@@ -66,7 +66,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                     ),
                   ),),
                   SizedBox(height: 10,),
-                  Input( authController.pass, 'Rewrite New Password',passwordObscured2, TextInputType.text, IconButton(
+                  Input( authController.confirmPass, 'Confirm New Password',passwordObscured2, TextInputType.text, IconButton(
                     onPressed: (){
                       setState(() {
                         passwordObscured2=!passwordObscured2;
@@ -81,11 +81,19 @@ class _ChangePasswordState extends State<ChangePassword> {
                 ],
               ),
             ),
-
+    Txt(msg ,Color(0xffF23B5F) , 20, FontWeight.normal),
             Container(height: height*0.55,
               alignment: Alignment.bottomCenter,
+
               child: MainBtn(Txt('Change Password',Colors.white,20,FontWeight.bold),width*0.9,
-                  height*0.07,10,Color(0xffF23B5F), Color(0xffF23B5F),(){}),
+                  height*0.07,10,Color(0xffF23B5F), Color(0xffF23B5F),() {setState(() {
+                msg=authController.validatechangepassword();
+                });
+
+          if(msg.isEmpty){
+        //========================start signing up or route to code/home screen============
+        authController.changepassword();
+  }}),
             ),
 
           ],

@@ -16,11 +16,10 @@ class TermsAndServices extends StatefulWidget {
 
 class _TermsAndServicesState extends State<TermsAndServices> {
   List<String> List1 = [
-    'Without Limitation',
     'Female',
     'Male',
   ];
-  String itemSelected1 = 'Without Limitation';
+  String itemSelected1 = 'Female';
 
   List<String> List2 = ['Egypt', 'china', 'Amercia'];
   String itemSelected2 = 'Egypt';
@@ -167,76 +166,76 @@ class _TermsAndServicesState extends State<TermsAndServices> {
               }, false, Color(0xffF23B5F), Colors.white, Colors.white,
                   width * 0.9),
               SizedBox(
-                height: 20.0,
+                height: 15.0,
               ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 30, bottom: 10),
-                    child: Txt('Desired Nationalities', Color(0xff25334D), 15,
-                        FontWeight.bold),
-                  ),
-                ],
-              ),
-              dropDown(List2, (value) {
-                setState(() {
-                  itemSelected2 = value;
-                });
-              }, false, Color(0xffF23B5F), Colors.white, Colors.white,
-                  width * 0.9),
+              // Row(
+              //   crossAxisAlignment: CrossAxisAlignment.start,
+              //   children: [
+              //     Padding(
+              //       padding: const EdgeInsets.only(left: 30, bottom: 10),
+              //       child: Txt('Desired Nationalities', Color(0xff25334D), 15,
+              //           FontWeight.bold),
+              //     ),
+              //   ],
+              // ),
+              // dropDown(List2, (value) {
+              //   setState(() {
+              //     itemSelected2 = value;
+              //   });
+              // }, false, Color(0xffF23B5F), Colors.white, Colors.white,
+              //     width * 0.9),
               SizedBox(
-                height: 20.0,
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 30, bottom: 10),
-                    child: Txt('Existing Features', Color(0xff25334D), 15,
-                        FontWeight.bold),
-                  ),
-                ],
-              ),
-              Container(
-                margin: EdgeInsets.only(
-                  left: 25,
-                  right: 25,
-                ),
-                padding: const EdgeInsets.only(left: 10.0),
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey, width: 1),
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Txt('Add New Features', Colors.grey, 10, FontWeight.normal),
-                    Container(
-                      decoration: BoxDecoration(
-                        // border: Border.all(width: 1),
-                        borderRadius: BorderRadius.circular(4),
-                        color: Color(0xffF23B5F),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(5),
-                        child: CircleAvatar(
-                          radius: 10.0,
-                          backgroundColor: Colors.white,
-                          child: FaIcon(
-                            FontAwesomeIcons.plus,
-                            size: 15,
-                            color: Color(0xffF23B5F),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
                 height: 10.0,
               ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 30, bottom: 10),
+                    child: Txt('Existing Features', Color(0xff25334D), 20,
+                        FontWeight.bold),
+                  ),
+                ],
+              ),
+              // Container(
+              //   margin: EdgeInsets.only(
+              //     left: 25,
+              //     right: 25,
+              //   ),
+              //   padding: const EdgeInsets.only(left: 10.0),
+              //   decoration: BoxDecoration(
+              //     border: Border.all(color: Colors.grey, width: 1),
+              //     borderRadius: BorderRadius.circular(4),
+              //   ),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //     children: [
+              //       Txt('Add New Features', Colors.grey, 10, FontWeight.normal),
+              //       Container(
+              //         decoration: BoxDecoration(
+              //           // border: Border.all(width: 1),
+              //           borderRadius: BorderRadius.circular(4),
+              //           color: Color(0xffF23B5F),
+              //         ),
+              //         child: Padding(
+              //           padding: const EdgeInsets.all(5),
+              //           child: CircleAvatar(
+              //             radius: 10.0,
+              //             backgroundColor: Colors.white,
+              //             child: FaIcon(
+              //               FontAwesomeIcons.plus,
+              //               size: 15,
+              //               color: Color(0xffF23B5F),
+              //             ),
+              //           ),
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              // const SizedBox(
+              //   height: 10.0,
+              // ),
               Container(
                 padding: EdgeInsets.only(left: 10),
                 child: Column(
@@ -311,139 +310,139 @@ class _TermsAndServicesState extends State<TermsAndServices> {
               SizedBox(
                 height: 20.0,
               ),
+              // Row(
+              //   crossAxisAlignment: CrossAxisAlignment.start,
+              //   children: [
+              //     Padding(
+              //       padding: const EdgeInsets.only(left: 30, bottom: 10),
+              //       child: Txt('Optional Services', Color(0xff25334D), 15,
+              //           FontWeight.bold),
+              //     ),
+              //   ],
+              // ),
+              // // Container(
+              // //   margin: EdgeInsets.only(
+              // //     left: 25,
+              // //     right: 25,
+              // //   ),
+              // //   padding: const EdgeInsets.only(left: 10.0),
+              // //   decoration: BoxDecoration(
+              // //     border: Border.all(color: Colors.grey, width: 1),
+              // //     borderRadius: BorderRadius.circular(4),
+              // //   ),
+              // //   child: Row(
+              // //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              // //     children: [
+              // //       Txt('Add New Services', Colors.grey, 10, FontWeight.normal),
+              // //       Container(
+              // //         decoration: BoxDecoration(
+              // //           // border: Border.all(width: 1),
+              // //           borderRadius: BorderRadius.circular(4),
+              // //           color: Color(0xffF23B5F),
+              // //         ),
+              // //         child: Padding(
+              // //           padding: const EdgeInsets.all(5),
+              // //           child: CircleAvatar(
+              // //             radius: 10.0,
+              // //             backgroundColor: Colors.white,
+              // //             child: FaIcon(
+              // //               FontAwesomeIcons.plus,
+              // //               size: 15,
+              // //               color: Color(0xffF23B5F),
+              // //             ),
+              // //           ),
+              // //         ),
+              // //       ),
+              // //     ],
+              // //   ),
+              // // ),
+              // const SizedBox(
+              //   height: 10.0,
+              // ),
+              // Container(
+              //   padding: EdgeInsets.only(left: 10),
+              //   child: Column(
+              //     crossAxisAlignment: CrossAxisAlignment.start,
+              //     children: [
+              //       Check(
+              //         'Free Breakfast',
+              //         fvalue1,
+              //         () {
+              //           setState(() {
+              //             fvalue1 = !fvalue1;
+              //           });
+              //         },
+              //       ),
+              //       Check(
+              //         'Launch',
+              //         kvalue1,
+              //         () {
+              //           setState(() {
+              //             lvalue1 = !lvalue1;
+              //           });
+              //         },
+              //       ),
+              //       Check(
+              //         'Dinner',
+              //         bvalue1,
+              //         () {
+              //           setState(() {
+              //             dvalue1 = !dvalue1;
+              //           });
+              //         },
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              // SizedBox(
+              //   height: 20.0,
+              // ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(left: 30, bottom: 10),
-                    child: Txt('Optional Services', Color(0xff25334D), 15,
+                    child: Txt('Requried Terms', Color(0xff25334D), 20,
                         FontWeight.bold),
                   ),
                 ],
               ),
-              Container(
-                margin: EdgeInsets.only(
-                  left: 25,
-                  right: 25,
-                ),
-                padding: const EdgeInsets.only(left: 10.0),
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey, width: 1),
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Txt('Add New Services', Colors.grey, 10, FontWeight.normal),
-                    Container(
-                      decoration: BoxDecoration(
-                        // border: Border.all(width: 1),
-                        borderRadius: BorderRadius.circular(4),
-                        color: Color(0xffF23B5F),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(5),
-                        child: CircleAvatar(
-                          radius: 10.0,
-                          backgroundColor: Colors.white,
-                          child: FaIcon(
-                            FontAwesomeIcons.plus,
-                            size: 15,
-                            color: Color(0xffF23B5F),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 10.0,
-              ),
-              Container(
-                padding: EdgeInsets.only(left: 10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Check(
-                      'Free Breakfast',
-                      fvalue1,
-                      () {
-                        setState(() {
-                          fvalue1 = !fvalue1;
-                        });
-                      },
-                    ),
-                    Check(
-                      'Launch',
-                      kvalue1,
-                      () {
-                        setState(() {
-                          lvalue1 = !lvalue1;
-                        });
-                      },
-                    ),
-                    Check(
-                      'Dinner',
-                      bvalue1,
-                      () {
-                        setState(() {
-                          dvalue1 = !dvalue1;
-                        });
-                      },
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 20.0,
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 30, bottom: 10),
-                    child: Txt('Requried Terms', Color(0xff25334D), 15,
-                        FontWeight.bold),
-                  ),
-                ],
-              ),
-              Container(
-                margin: EdgeInsets.only(
-                  left: 25,
-                  right: 25,
-                ),
-                padding: const EdgeInsets.only(left: 10.0),
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey, width: 1),
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Txt('Add New Terms', Colors.grey, 10, FontWeight.normal),
-                    Container(
-                      decoration: BoxDecoration(
-                        // border: Border.all(width: 1),
-                        borderRadius: BorderRadius.circular(4),
-                        color: Color(0xffF23B5F),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(5),
-                        child: CircleAvatar(
-                          radius: 10.0,
-                          backgroundColor: Colors.white,
-                          child: FaIcon(
-                            FontAwesomeIcons.plus,
-                            size: 15,
-                            color: Color(0xffF23B5F),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              // Container(
+              //   margin: EdgeInsets.only(
+              //     left: 25,
+              //     right: 25,
+              //   ),
+              //   padding: const EdgeInsets.only(left: 10.0),
+              //   decoration: BoxDecoration(
+              //     border: Border.all(color: Colors.grey, width: 1),
+              //     borderRadius: BorderRadius.circular(4),
+              //   ),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //     children: [
+              //       Txt('Add New Terms', Colors.grey, 10, FontWeight.normal),
+              //       Container(
+              //         decoration: BoxDecoration(
+              //           // border: Border.all(width: 1),
+              //           borderRadius: BorderRadius.circular(4),
+              //           color: Color(0xffF23B5F),
+              //         ),
+              //         child: Padding(
+              //           padding: const EdgeInsets.all(5),
+              //           child: CircleAvatar(
+              //             radius: 10.0,
+              //             backgroundColor: Colors.white,
+              //             child: FaIcon(
+              //               FontAwesomeIcons.plus,
+              //               size: 15,
+              //               color: Color(0xffF23B5F),
+              //             ),
+              //           ),
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
               const SizedBox(
                 height: 10.0,
               ),

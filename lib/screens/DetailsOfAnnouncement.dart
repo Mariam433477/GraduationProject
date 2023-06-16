@@ -207,38 +207,38 @@ class _DetailsOfAnnouncementState extends State<DetailsOfAnnouncement> {
                         SizedBox(
                           height: 10,
                         ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 30, bottom: 15),
-                              child: Txt('Place Available', Color(0xff25334D),
-                                  15, FontWeight.normal),
-                            ),
-                          ],
-                        ),
-                        Stack(
-                          alignment: Alignment.centerRight,
-                          children: [
-                            InputOutline(
-                                null, '', false, TextInputType.text, null),
-                            Container(
-                                decoration: BoxDecoration(
-                                    border: Border.all(width: 1),
-                                    color: Color(0xffdddddd),
-                                    borderRadius: BorderRadius.circular(5)),
-                                child: MainBtn(
-                                    Txt('Members', Color(0xff25334D), 15,
-                                        FontWeight.bold),
-                                    width * 0.2,
-                                    height * 0.04,
-                                    5,
-                                    Color(0xffdddddd),
-                                    Color(0xffdddddd),
-                                    () {})),
-                          ],
-                        ),
+                        // Row(
+                        //   crossAxisAlignment: CrossAxisAlignment.start,
+                        //   children: [
+                        //     Padding(
+                        //       padding:
+                        //           const EdgeInsets.only(left: 30, bottom: 15),
+                        //       child: Txt('Place Available', Color(0xff25334D),
+                        //           15, FontWeight.normal),
+                        //     ),
+                        //   ],
+                        // ),
+                        // Stack(
+                        //   alignment: Alignment.centerRight,
+                        //   children: [
+                        //     InputOutline(
+                        //         null, '', false, TextInputType.text, null),
+                        //     Container(
+                        //         decoration: BoxDecoration(
+                        //             border: Border.all(width: 1),
+                        //             color: Color(0xffdddddd),
+                        //             borderRadius: BorderRadius.circular(5)),
+                        //         child: MainBtn(
+                        //             Txt('Members', Color(0xff25334D), 15,
+                        //                 FontWeight.bold),
+                        //             width * 0.2,
+                        //             height * 0.04,
+                        //             5,
+                        //             Color(0xffdddddd),
+                        //             Color(0xffdddddd),
+                        //             () {})),
+                        //   ],
+                        // ),
                         SizedBox(
                           height: 10,
                         ),
@@ -302,18 +302,18 @@ class _DetailsOfAnnouncementState extends State<DetailsOfAnnouncement> {
                         SizedBox(
                           height: 10,
                         ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 30, bottom: 15),
-                              child: Txt('Mobile', Color(0xff25334D), 15,
-                                  FontWeight.normal),
-                            ),
-                          ],
-                        ),
-                        InputOutline(null, '', false, TextInputType.text, null),
+                        // Row(
+                        //   crossAxisAlignment: CrossAxisAlignment.start,
+                        //   children: [
+                        //     Padding(
+                        //       padding:
+                        //           const EdgeInsets.only(left: 30, bottom: 15),
+                        //       child: Txt('Mobile', Color(0xff25334D), 15,
+                        //           FontWeight.normal),
+                        //     ),
+                        //   ],
+                        // ),
+                       // InputOutline(null, '', false, TextInputType.text, null),
                       ],
                     ),
                   ],
