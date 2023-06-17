@@ -514,8 +514,7 @@ class _TermsAndServicesState extends State<TermsAndServices> {
                           value: wvalue2![index],
                           onChanged: (value) {
                             setState(() {
-                              listSelectedTermText =
-                              listSelectedTerms[index];
+                              listSelectedTermText = listSelectedTerms[index];
                               wvalue2![index] = value!;
                             });
                           }))
@@ -602,10 +601,14 @@ class _TermsAndServicesState extends State<TermsAndServices> {
                   5,
                   Color(0xffF23B5F),
                   Color(0xffF23B5F), () async {
-                    print(widget.location!.latitude.toString(),);
-                    print(widget.location!.latitude.toString(),);
-                  // await  controller.decodeLatLong(latLng: LatLng(widget.location!.latitude,
-                  //       widget.location!.latitude));
+                print(
+                  widget.location!.latitude.toString(),
+                );
+                print(
+                  widget.location!.latitude.toString(),
+                );
+                // await  controller.decodeLatLong(latLng: LatLng(widget.location!.latitude,
+                //       widget.location!.latitude));
                 controller.sendData(
                     createAdsModel: CreateAdsModel(
                         email: widget.email,
@@ -614,7 +617,7 @@ class _TermsAndServicesState extends State<TermsAndServices> {
                         description: widget.description,
                         city: controller.city.value,
                         governorate: controller.governate.value,
-                        gender: "true",
+                        gender: itemSelected1 == "Female" ? "false" : "true",
                         features: listSelectedText,
                         terms: listSelectedTermText,
                         images: widget.image,

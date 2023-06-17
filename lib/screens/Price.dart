@@ -34,12 +34,11 @@ class Price extends StatefulWidget {
 
 class _PriceState extends State<Price> {
   List<String> List1 = [
-    'Every 1 Month',
-    'Every 3 Months',
-    'Every 6 Months',
-    'A One Time Payment'
+    'Day',
+    'Month',
+    'Year',
   ];
-  String itemSelected1 = 'Every 3 Months';
+  String itemSelected1 = 'Day';
   TextEditingController price = TextEditingController();
 
   @override
