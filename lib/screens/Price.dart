@@ -2,13 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:sakenny/screens/TermsAndServices.dart';
 
 import '../components/detailsAnnouncement.dart';
 import '../components/home.dart';
 import '../components/shared.dart';
 
 class Price extends StatefulWidget {
-  const Price({Key? key}) : super(key: key);
+  const Price(
+      {Key? key,
+      this.description,
+      this.phone,
+      this.location,
+      this.announcement,
+      this.email,
+      this.image,
+      this.imageDescription})
+      : super(key: key);
+  final String? description;
+  final String? phone;
+  final String? image;
+  final String? imageDescription;
+  final String? email;
+  final String? announcement;
+  final LatLng? location;
 
   @override
   State<Price> createState() => _PriceState();
@@ -16,12 +34,13 @@ class Price extends StatefulWidget {
 
 class _PriceState extends State<Price> {
   List<String> List1 = [
-    'Every 1 Month',
-    'Every 3 Months',
-    'Every 6 Months',
-    'A One Time Payment'
+    'Day',
+    'Month',
+    'Year',
   ];
-  String itemSelected1 = 'Every 3 Months';
+  String itemSelected1 = 'Day';
+  TextEditingController price = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -134,7 +153,7 @@ class _PriceState extends State<Price> {
             Stack(
               alignment: Alignment.centerRight,
               children: [
-                InputOutline(null, '', false, TextInputType.text, null),
+                InputOutline(price, '', false, TextInputType.text, null),
                 Container(
                     decoration: BoxDecoration(
                         border: Border.all(width: 1),
@@ -180,7 +199,17 @@ class _PriceState extends State<Price> {
                 5,
                 Color(0xffF23B5F),
                 Color(0xffF23B5F), () {
-              Get.toNamed("/TermsAndServices");
+              Get.to(() => TermsAndServices(
+                    imageDescription: widget.imageDescription,
+                    image: widget.image,
+                    phone: widget.phone,
+                    email: widget.email,
+                    announcement: widget.announcement,
+                    description: widget.description,
+                    location: widget.location,
+                    price: price.text,
+                    perPrice: itemSelected1,
+                  ));
             }),
           ),
           Positioned(

@@ -4,12 +4,14 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:sakenny/components/shared.dart';
+import 'package:sakenny/screens/NextStep.dart';
 import '../components/detailsAnnouncement.dart';
 import '../components/home.dart';
 import '../controller/authentication.dart';
 
 class DetailsOfAnnouncement extends StatefulWidget {
   const DetailsOfAnnouncement({Key? key}) : super(key: key);
+
   @override
   State<DetailsOfAnnouncement> createState() => _DetailsOfAnnouncementState();
 }
@@ -22,6 +24,11 @@ class _DetailsOfAnnouncementState extends State<DetailsOfAnnouncement> {
     'Apartment',
   ];
   String itemSelected1 = 'Room';
+  TextEditingController announcement = TextEditingController();
+  TextEditingController description = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController phone = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -157,7 +164,8 @@ class _DetailsOfAnnouncementState extends State<DetailsOfAnnouncement> {
                           ],
                         ),
 
-                        InputOutline(null, '', false, TextInputType.text, null),
+                        InputOutline(announcement, '', false,
+                            TextInputType.text, null),
                         Notes('Announcement name must be clear and easy'),
                         Notes('Announcement name must consist of only letters'),
                         Notes("Don't use @,(,),#,%"),
@@ -259,6 +267,7 @@ class _DetailsOfAnnouncementState extends State<DetailsOfAnnouncement> {
                         Container(
                           width: width * 0.9,
                           child: TextFormField(
+                              controller: description,
                               maxLines: 6,
                               minLines: 2,
                               keyboardType: TextInputType.multiline,
@@ -283,7 +292,8 @@ class _DetailsOfAnnouncementState extends State<DetailsOfAnnouncement> {
                             ),
                           ],
                         ),
-                        InputOutline(null, '', false, TextInputType.text, null),
+                        InputOutline(
+                            email, '', false, TextInputType.text, null),
                         SizedBox(
                           height: 10,
                         ),
@@ -298,7 +308,8 @@ class _DetailsOfAnnouncementState extends State<DetailsOfAnnouncement> {
                             ),
                           ],
                         ),
-                        InputOutline(null, '', false, TextInputType.text, null),
+                        InputOutline(
+                            phone, '', false, TextInputType.text, null),
                         SizedBox(
                           height: 10,
                         ),
@@ -313,7 +324,7 @@ class _DetailsOfAnnouncementState extends State<DetailsOfAnnouncement> {
                         //     ),
                         //   ],
                         // ),
-                       // InputOutline(null, '', false, TextInputType.text, null),
+                        // InputOutline(null, '', false, TextInputType.text, null),
                       ],
                     ),
                   ],
@@ -330,7 +341,13 @@ class _DetailsOfAnnouncementState extends State<DetailsOfAnnouncement> {
                   5,
                   Color(0xffF23B5F),
                   Color(0xffF23B5F), () {
-                Get.toNamed("/NextStep");
+               Get.to(()=>NextStep(
+                 email: email.text,
+                 phone: phone.text,
+                 announcement: announcement.text,
+                 description: description.text,
+               ));
+                // Get.toNamed("/NextStep");
               }),
             ),
           ],
