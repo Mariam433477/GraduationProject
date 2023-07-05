@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../components/shared.dart';
 import '../controller/authentication.dart';
@@ -17,6 +18,7 @@ class _EditProfileState extends State<EditProfile> {
   AuthController authController=Get.put(AuthController());
   @override
   Widget build(BuildContext context) {
+    XFile? imageXFiLe;
     return Scaffold(
       appBar:AppBar(
         automaticallyImplyLeading: false,
@@ -72,8 +74,15 @@ class _EditProfileState extends State<EditProfile> {
                           bottom: 8.0,
                           end: 8.0,
                         ),
-                        child: FaIcon(FontAwesomeIcons.pen,size: 10,color: Colors.white,),
-                      )
+                        child:GestureDetector(child: FaIcon(FontAwesomeIcons.pen,size: 10,color: Colors.white,),
+                      onTap:()async{
+                        final ImagePicker picker = ImagePicker();
+
+                        imageXFiLe = await picker.pickImage(source: ImageSource.gallery);
+                        print(imageXFiLe?.path??""
+                            +"sssssss");
+                      },
+                        ))
                     ],
                   ),
 

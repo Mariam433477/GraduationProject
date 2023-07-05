@@ -192,19 +192,19 @@ class _HomeState extends State<Home> {
                       height: height * 0.5,
                       width: width,
                       child: ListView.builder(
-                          itemCount: controller.model!.ads!.length,
+                          itemCount: controller.model?.ads?.length,
                           itemBuilder: (context, i) {
                             return mainBox(
-                                (controller.model!.ads![i].images!.isEmpty)
+                                (controller.model?.ads?[i].images==null)
                                     ? "https://theperfectroundgolf.com/wp-content/uploads/2022/04/placeholder.png"
                                     : controller
                                         .model!.ads![i].images!.first.url!,
-                                controller.model!.ads![i].city ?? "",
-                                controller.model!.ads![i].price.toString(),
+                                controller.model?.ads?[i].city ?? "",
+                                "${controller.model?.ads?[i].price}",
                                 3,
                                 50,
-                                controller.model!.ads![i].description
-                                    .toString());
+                                "${controller.model?.ads?[i].description}"
+                                     );
                           }),
                     ),
                   ]),
@@ -212,3 +212,4 @@ class _HomeState extends State<Home> {
         ));
   }
 }
+
