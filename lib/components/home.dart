@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'shared.dart';
 
-Widget mainBox (String image,String location,String price,int bedNamber,int meters,String subTitle){
+Widget mainBox (String image,String location,String price,String subTitle){
   return
     SizedBox(
       width: width * 0.9,
@@ -66,27 +66,27 @@ Widget mainBox (String image,String location,String price,int bedNamber,int mete
                       children: [
                         Txt('$price EGP/Month', Colors.white, 10,
                             FontWeight.bold),
-                        Row(
-                          children: [
-                            Row(
-                              children: [
-                                Txt('$bedNamber', Colors.white, 10, FontWeight.bold),
-                                const SizedBox(width: 2),
-                                const FaIcon(FontAwesomeIcons.bed,
-                                  color: Colors.white,size: 10,),
-                              ],
-                            ),
-                            SizedBox(width: 5),
-                            Row(
-                              children: [
-                                Txt('$meters M', Colors.white, 10, FontWeight.bold),
-                                const SizedBox(width: 2),
-                                FaIcon(FontAwesomeIcons.bed,
-                                  color: Colors.white,size: 10,),
-                              ],
-                            )
-                          ],
-                        ),
+                        // Row(
+                        //   children: [
+                        //     Row(
+                        //       children: [
+                        //         Txt('$bedNamber', Colors.white, 10, FontWeight.bold),
+                        //         const SizedBox(width: 2),
+                        //         const FaIcon(FontAwesomeIcons.bed,
+                        //           color: Colors.white,size: 10,),
+                        //       ],
+                        //     ),
+                        //     SizedBox(width: 5),
+                        //     Row(
+                        //       children: [
+                        //         Txt('$meters M', Colors.white, 10, FontWeight.bold),
+                        //         const SizedBox(width: 2),
+                        //         FaIcon(FontAwesomeIcons.bed,
+                        //           color: Colors.white,size: 10,),
+                        //       ],
+                        //     )
+                        //   ],
+                        // ),
                       ],
                     )
                   ],

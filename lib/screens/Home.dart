@@ -6,6 +6,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:sakenny/components/home.dart';
 import 'package:sakenny/components/shared.dart';
 import 'package:sakenny/controller/home_controller.dart';
+import 'package:sakenny/screens/Apartment.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -23,13 +24,19 @@ class _HomeState extends State<Home> {
     'Indonesia'
   ];
   String itemSelected = 'Egypt';
+  List<String> countriesList2 = [
+    'Tanta',
+    'Alex',
+    'shebin Elkom',
+    'china'
+  ];
+  String itemSelected2 = 'Tanta';
   List<String> countriesList1 = [
-    'Without Determination',
     'Room',
     'Bed',
     'Apartment',
   ];
-  String itemSelected1 = 'Without Determination';
+  String itemSelected1 =  'Room';
 
   @override
   Widget build(BuildContext context) {
@@ -78,139 +85,152 @@ class _HomeState extends State<Home> {
             )
           ],
         ),
-        body: Obx(
-          () => controller.loading.value
-              ? Center(
-                  child: CircularProgressIndicator(),
-                )
-              : SingleChildScrollView(
-                  child: Column(children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SingleChildScrollView(
-                          child: Container(
-                            margin: EdgeInsets.only(top: 30),
-                            decoration: BoxDecoration(
-                              color: Color(0xffF23B5F),
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(10.0),
-                                topRight: Radius.circular(10.0),
-                                bottomLeft: Radius.circular(10.0),
-                                bottomRight: Radius.circular(10.0),
-                              ),
-                            ),
-                            width: width * 0.9,
-                            height: height * 0.50,
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 20.0, top: 15, bottom: 15),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Txt('Search in', Colors.white, 20,
-                                          FontWeight.normal),
-                                    ],
-                                  ),
-                                ),
-                                dropDown(countriesList, (value) {
-                                  setState(() {
-                                    itemSelected = value;
-                                  });
-                                }, true, Colors.white, Color(0xff25334D),
-                                    Color(0xff25334D), width * 0.8),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 20.0, top: 15, bottom: 15),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Txt('Search about', Colors.white, 20,
-                                          FontWeight.normal),
-                                    ],
-                                  ),
-                                ),
-                                dropDown(countriesList1, (value) {
-                                  setState(() {
-                                    itemSelected1 = value;
-                                  });
-                                }, false, Colors.white, Color(0xff25334D),
-                                    Color(0xff25334D), width * 0.8),
-                                SizedBox(
-                                  height: height * 0.07,
-                                ),
-                                MainBtn(
-                                    Txt('Search', Colors.black, 20,
-                                        FontWeight.normal),
-                                    width * 0.8,
-                                    height * 0.06,
-                                    10,
-                                    Colors.white,
-                                    Colors.white,
-                                    () {}),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: height * 0.02),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        MainBtn(
-                            Txt('Filter By', Colors.grey, 20,
-                                FontWeight.normal),
-                            width * 0.4,
-                            height * 0.07,
-                            10,
-                            Color(0xffE0E0E0),
-                            Color(0xffE0E0E0), () {
-                          Get.toNamed("/OrderOf");
-                        }),
-                        SizedBox(
-                          width: width * 0.07,
-                        ),
-                        MainBtn(
-                            Txt('Drop Down', Colors.white, 20,
-                                FontWeight.normal),
-                            width * 0.4,
-                            height * 0.07,
-                            10,
-                            Color(0xffF23B5F),
-                            Color(0xffE0E0E0), () {
-                          Get.toNamed("/SortOf");
-                        }),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    SizedBox(
-                      height: height * 0.5,
-                      width: width,
-                      child:GestureDetector (child:ListView.builder(
-                          itemCount: controller.model?.ads?.length,
-                          itemBuilder: (context, i) {
-                            return mainBox(
-                                (controller.model?.ads?[i].images==null)
-                                    ? "https://theperfectroundgolf.com/wp-content/uploads/2022/04/placeholder.png"
-                                    : controller
-                                        .model!.ads![i].images!.first.url!,
-                                controller.model?.ads?[i].city ?? "",
-                                "${controller.model?.ads?[i].price}",
-                                3,
-                                50,
-                                "${controller.model?.ads?[i].description}"
-                                     );
-                          }),onTap: (){ Get.toNamed("/Apartment");},
-                    ),)
-                  ]
-                    ),
-                ),
-        ));
+        // body: Obx(
+        //   () => controller.loading.value
+        //       ? Center(
+        //           child: CircularProgressIndicator(),
+        //         )
+        //       : SingleChildScrollView(
+        //           child: Column(children: [
+        //             Container(
+        //               margin: EdgeInsets.only(top: 30),
+        //               decoration: BoxDecoration(
+        //                 color: Color(0xffF23B5F),
+        //                 borderRadius: BorderRadius.only(
+        //                   topLeft: Radius.circular(10.0),
+        //                   topRight: Radius.circular(10.0),
+        //                   bottomLeft: Radius.circular(10.0),
+        //                   bottomRight: Radius.circular(10.0),
+        //                 ),
+        //               ),
+        //               width: width * 0.9,
+        //               height: height * 0.60,
+        //               child: Column(
+        //                 children: [
+        //                   Padding(
+        //                     padding: const EdgeInsets.only(
+        //                         left: 20.0, top: 15, bottom: 15),
+        //                     child: Row(
+        //                       mainAxisAlignment: MainAxisAlignment.start,
+        //                       children: [
+        //                         Txt('City', Colors.white, 20,
+        //                             FontWeight.normal),
+        //                       ],
+        //                     ),
+        //                   ),
+        //                   dropDown(countriesList, (value) {
+        //                     setState(() {
+        //                       itemSelected = value;
+        //                     });
+        //                   }, true, Colors.white, Color(0xff25334D),
+        //                       Color(0xff25334D), width * 0.8),
+        //                   Padding(
+        //                     padding: const EdgeInsets.only(
+        //                         left: 20.0, top: 15, bottom: 15),
+        //                     child: Row(
+        //                       mainAxisAlignment: MainAxisAlignment.start,
+        //                       children: [
+        //                         Txt('Country', Colors.white, 20,
+        //                             FontWeight.normal),
+        //                       ],
+        //                     ),
+        //                   ),
+        //                   dropDown(countriesList2, (value) {
+        //                     setState(() {
+        //                       itemSelected2 = value;
+        //                     });
+        //                   }, true, Colors.white, Color(0xff25334D),
+        //                       Color(0xff25334D), width * 0.8),
+        //                   Padding(
+        //                     padding: const EdgeInsets.only(
+        //                         left: 20.0, top: 15, bottom: 15),
+        //                     child: Row(
+        //                       mainAxisAlignment: MainAxisAlignment.start,
+        //                       children: [
+        //                         Txt('Search about', Colors.white, 20,
+        //                             FontWeight.normal),
+        //                       ],
+        //                     ),
+        //                   ),
+        //                   dropDown(countriesList1, (value) {
+        //                     setState(() {
+        //                       itemSelected1 = value;
+        //                     });
+        //                   }, false, Colors.white, Color(0xff25334D),
+        //                       Color(0xff25334D), width * 0.8),
+        //                   SizedBox(
+        //                     height: height * 0.07,
+        //                   ),
+        //                   MainBtn(
+        //                       Txt('Search', Colors.black, 20,
+        //                           FontWeight.normal),
+        //                       width * 0.8,
+        //                       height * 0.06,
+        //                       10,
+        //                       Colors.white,
+        //                       Colors.white,
+        //                       () {}),
+        //                 ],
+        //               ),
+        //             ),
+        //             SizedBox(height: height * 0.02),
+        //             Row(
+        //               mainAxisAlignment: MainAxisAlignment.center,
+        //               children: [
+        //                 MainBtn(
+        //                     Txt('Filter By', Colors.grey, 20,
+        //                         FontWeight.normal),
+        //                     width * 0.4,
+        //                     height * 0.07,
+        //                     10,
+        //                     Color(0xffE0E0E0),
+        //                     Color(0xffE0E0E0), () {
+        //                   Get.toNamed("/OrderOf");
+        //                 }),
+        //                 SizedBox(
+        //                   width: width * 0.07,
+        //                 ),
+        //                 MainBtn(
+        //                     Txt('Drop Down', Colors.white, 20,
+        //                         FontWeight.normal),
+        //                     width * 0.4,
+        //                     height * 0.07,
+        //                     10,
+        //                     Color(0xffF23B5F),
+        //                     Color(0xffE0E0E0), () {
+        //                   Get.toNamed("/SortOf");
+        //                 }),
+        //               ],
+        //             ),
+        //             SizedBox(
+        //               height: 20,
+        //             ),
+        //             ListView.builder(
+        //               shrinkWrap: true,
+        //                 physics: const BouncingScrollPhysics(),
+        //                 itemCount: controller.model?.ads?.length,
+        //                 itemBuilder: (context, i) {
+        //                   return GestureDetector(
+        //                     onTap: (){
+        //                       Get.to(()=>Apartment(ads:controller.model?.ads?[i] ,));
+        //                     },
+        //                     child: mainBox(
+        //                         (controller.model?.ads?[i].images==null)
+        //                             ? "https://theperfectroundgolf.com/wp-content/uploads/2022/04/placeholder.png"
+        //                             : controller
+        //                                 .model!.ads![i].images!.first.url!,
+        //                         controller.model?.ads?[i].city ?? "",
+        //                         "${controller.model?.ads?[i].price}",
+        //
+        //                         "${controller.model?.ads?[i].description}"
+        //                              ),
+        //                   );
+        //                 })
+        //           ]
+        //             ),
+        //         ),
+        // )
+    );
   }
 }
 

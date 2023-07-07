@@ -5,13 +5,14 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:sakenny/components/detailsAnnouncement.dart';
+import 'package:sakenny/model/get_all_ads_model.dart';
 
 import '../components/detailsAnnouncement.dart';
 import '../components/shared.dart';
 
 class Apartment extends StatefulWidget {
-  const Apartment({super.key});
-
+  const Apartment({super.key,this.ads});
+final Ads ?ads;
   @override
   State<Apartment> createState() => _ApartmentState();
 }
@@ -33,6 +34,7 @@ class _ApartmentState extends State<Apartment> {
   // double saveRating = 3.0;
   @override
   Widget build(BuildContext context) {
+    print(widget.ads!.toJson());
     lat = 24.774265;
     long = 46.738586;
     final LatLng _kMapCenter = LatLng(lat, long);
@@ -115,7 +117,7 @@ class _ApartmentState extends State<Apartment> {
                                 child: SingleChildScrollView(
                                   scrollDirection: Axis.horizontal,
                                   child: Txt(
-                                      'ثلاث غرف للايجار ببنها 24متر الدور الاول علوي',
+                                     widget.ads?.email??"tttt",
                                       Color(0xffF23B5F),
                                       13,
                                       FontWeight.normal),
