@@ -191,7 +191,7 @@ class _HomeState extends State<Home> {
                     SizedBox(
                       height: height * 0.5,
                       width: width,
-                      child: ListView.builder(
+                      child:GestureDetector (child:ListView.builder(
                           itemCount: controller.model?.ads?.length,
                           itemBuilder: (context, i) {
                             return mainBox(
@@ -205,9 +205,10 @@ class _HomeState extends State<Home> {
                                 50,
                                 "${controller.model?.ads?[i].description}"
                                      );
-                          }),
+                          }),onTap: (){ Get.toNamed("/Apartment");},
+                    ),)
+                  ]
                     ),
-                  ]),
                 ),
         ));
   }
