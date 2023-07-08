@@ -24,19 +24,14 @@ class _HomeState extends State<Home> {
     'Indonesia'
   ];
   String itemSelected = 'Egypt';
-  List<String> countriesList2 = [
-    'Tanta',
-    'Alex',
-    'shebin Elkom',
-    'china'
-  ];
+  List<String> countriesList2 = ['Tanta', 'Alex', 'shebin Elkom', 'china'];
   String itemSelected2 = 'Tanta';
   List<String> countriesList1 = [
     'Room',
     'Bed',
     'Apartment',
   ];
-  String itemSelected1 =  'Room';
+  String itemSelected1 = 'Room';
 
   @override
   Widget build(BuildContext context) {
@@ -206,31 +201,30 @@ class _HomeState extends State<Home> {
                       height: 20,
                     ),
                     ListView.builder(
-                      shrinkWrap: true,
+                        shrinkWrap: true,
                         physics: const BouncingScrollPhysics(),
                         itemCount: controller.model?.ads?.length,
                         itemBuilder: (context, i) {
                           return GestureDetector(
-                            onTap: (){
-                              Get.to(()=>Apartment(ads:controller.model?.ads?[i] ,));
+                            onTap: () {
+                              Get.to(() => Apartment(
+                                    ads: controller.model?.ads?[i],
+                                  ));
                             },
                             child: mainBox(
-                                (controller.model?.ads?[i].images==null)
+                                (controller.model?.ads?[i].images == null ||
+                                        controller
+                                            .model!.ads![i].images!.isEmpty)
                                     ? "https://theperfectroundgolf.com/wp-content/uploads/2022/04/placeholder.png"
                                     : controller
-                                        .model!.ads![i].images!.first.url!,
+                                        .model!.ads![i].images!.first.url??"https://theperfectroundgolf.com/wp-content/uploads/2022/04/placeholder.png",
                                 controller.model?.ads?[i].city ?? "",
                                 "${controller.model?.ads?[i].price}",
-
-                                "${controller.model?.ads?[i].description}"
-                                     ),
+                                "${controller.model?.ads?[i].description}"),
                           );
                         })
-                  ]
-                    ),
+                  ]),
                 ),
-        )
-    );
+        ));
   }
 }
-

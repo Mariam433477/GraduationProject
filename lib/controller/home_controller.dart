@@ -13,7 +13,6 @@ class HomeController extends GetxController {
     super.onInit();
     loading.value = true;
     model = await services.getAllAds();
-    print(model?.toJson());
     loading.value = false;
   }
 }

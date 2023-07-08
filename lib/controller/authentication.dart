@@ -1,9 +1,13 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/_http/utils/body_decoder.dart';
+import 'package:get/get_rx/get_rx.dart';
+import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:get/get_utils/src/extensions/string_extensions.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sakenny/screens/ChangePassword.dart';
 import 'package:sakenny/screens/Profile.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:io';
 
 import '../api/ChangePasswordApi.dart';
@@ -31,9 +35,9 @@ class AuthController extends GetxController {
   bool validPhone1(String val) {
     bool isPhone = RegExp(validPhone).hasMatch(val);
     bool phoneStart = (val.startsWith("010") ||
-            val.startsWith("015") ||
-            val.startsWith("011") ||
-            val.startsWith("012")) &&
+        val.startsWith("015") ||
+        val.startsWith("011") ||
+        val.startsWith("012")) &&
         val.length == 11;
     return (isPhone && phoneStart);
   }
@@ -108,8 +112,7 @@ class AuthController extends GetxController {
     // }
     else if (!validEmail1(emailController.text)) {
       msg = "Enter valid email";
-    }
-    else if (passController.text.isEmpty) {
+    } else if (passController.text.isEmpty) {
       msg = "Enter Your password";
     } else if (passController.text.length < 5) {
       msg = "length must not be 5 number";
@@ -136,10 +139,11 @@ class AuthController extends GetxController {
     }
     return msg;
   }
-  validatechangepassword(){
+
+  validatechangepassword() {
     String msg = "";
     if (confirmPass.text != NewPass.text) {
-    msg = "does not match";
+      msg = "does not match";
     }
     return msg;
   }
@@ -163,25 +167,45 @@ class AuthController extends GetxController {
     await ResetPasswordApi(
         email: email.text, phone: phone.text, password: pass.text);
   }
+
   editprofile() async {
-    await EditProfileApi(
-        FullName: fullname.text,
-        email: email.text,
-        phone: phone.text,
-         );
+    final dio = Dio();
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var token = prefs.getString("token");
+    final response = await dio.put("https://sakkeny.onrender.com/users/update",
+        data: FormData.fromMap({
+        "new_fullname":fullname.text,
+        "new_email": email.text,
+        "new_phone_number": phone.text,
+        "images":await MultipartFile.fromFile(image.value,filename:image.value.split("/").last )
+        }),
+        options: Options(headers: {
+          'Authorization': 'Bearer $token ',
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }));
+    print(response.statusCode);
+    print(response.data);
+    // await EditProfileApi(
+    //   FullName: fullname.text,
+    //   email: email.text,
+    //   phone: phone.text,
+    // );
   }
-  changepassword()async{
+
+  changepassword() async {
     await ChangePasswordApi(
       password: pass.text,
-      Newpassword:NewPass.text,
+      Newpassword: NewPass.text,
     );
   }
-  final image="".obs;
-select() async {
-  final ImagePicker picker = ImagePicker();
 
-final  imageXFiLe = await picker.pickImage(source: ImageSource.gallery);
-image.value=imageXFiLe!.path;
-}
-}
+  final image = "".obs;
 
+  select() async {
+    final ImagePicker picker = ImagePicker();
+
+    final imageXFiLe = await picker.pickImage(source: ImageSource.gallery);
+    image.value = imageXFiLe!.path;
+  }
+}

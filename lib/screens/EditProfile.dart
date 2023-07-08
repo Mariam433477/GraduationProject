@@ -62,14 +62,32 @@ class _EditProfileState extends State<EditProfile> {
                     children: [
                       GestureDetector(
                         child: Obx(() => authController.image.value != ""
-                            ? Image.file(File(authController.image.value))
-                            : Image.asset("assets/images/mariam.jpg",fit: BoxFit.contain,)),
+                            ? Container(
+                          clipBehavior: Clip.antiAlias,
+                                width: 100,
+                                height: 100,
+                                decoration:
+                                    const BoxDecoration(shape: BoxShape.circle),
+                                child: Image.file(
+                                  File(authController.image.value),
+                                  fit: BoxFit.cover,
+                                ))
+                            : Container(
+                            clipBehavior: Clip.antiAlias,
+                                width: 100,
+                                height: 100,
+                                decoration:
+                                    const BoxDecoration(shape: BoxShape.circle),
+                                child: Image.asset(
+                                  "assets/images/mariam.jpg",
+                                  fit: BoxFit.cover,
+                                ))),
                         onTap: () {
                           Get.toNamed("/Profile");
                         },
                       ),
-                      Padding(
-                        padding: const EdgeInsetsDirectional.only(
+                      const Padding(
+                        padding: EdgeInsetsDirectional.only(
                           bottom: 3.0,
                           end: 3.0,
                         ),

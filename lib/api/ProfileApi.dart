@@ -15,7 +15,7 @@ ProfileApi() async {
   });
    if(response.statusCode==200){
      user u=user.fromJson(jsonDecode(response.body));
-     print(u.email);
+     print(jsonDecode(response.body));
      return u;
    }
 
