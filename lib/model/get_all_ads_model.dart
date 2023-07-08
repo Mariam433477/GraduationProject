@@ -79,7 +79,7 @@ class Ads {
   String? title;
   String? spaceType;
   String? description;
-  int? price;
+  dynamic price;
   String? city;
   String? governorate;
   String? lat;

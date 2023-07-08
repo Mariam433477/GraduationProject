@@ -9,7 +9,7 @@ class HomeService {
       final response =
           await dio.get("https://sakkeny.onrender.com/ads/get-all");
       print(response.statusCode);
-    //  print(response.data);
+      print(response.data);
       if (response.statusCode == 200) {
         GetAllAdsModel model = GetAllAdsModel.fromJson(response.data);
         print(model.toJson());

@@ -11,8 +11,10 @@ import '../components/detailsAnnouncement.dart';
 import '../components/shared.dart';
 
 class Apartment extends StatefulWidget {
-  const Apartment({super.key,this.ads});
-final Ads ?ads;
+  const Apartment({super.key, this.ads});
+
+  final Ads? ads;
+
   @override
   State<Apartment> createState() => _ApartmentState();
 }
@@ -34,9 +36,8 @@ class _ApartmentState extends State<Apartment> {
   // double saveRating = 3.0;
   @override
   Widget build(BuildContext context) {
-    print(widget.ads!.toJson());
-    lat = 24.774265;
-    long = 46.738586;
+    lat = double.parse(widget.ads!.lat ?? "0.0");
+    long = double.parse(widget.ads!.lng ?? "0.0");
     final LatLng _kMapCenter = LatLng(lat, long);
     final CameraPosition _kInitialPosition =
         CameraPosition(target: _kMapCenter, zoom: 11.0, tilt: 0, bearing: 0);
@@ -61,16 +62,13 @@ class _ApartmentState extends State<Apartment> {
                 children: [
                   Stack(
                     children: [
-                      CarouselSlider(
-                        items: [
-                          OfferImage("assets/images/bedroom-3778695__340.jpg"),
-                          OfferImage(
-                              "assets/images/living-room-1835923__340.jpg"),
-                          OfferImage("assets/images/library-5219747__340.jpg"),
-                          OfferImage(
-                              "assets/images/living-room-2732939__340.jpg"),
-                        ],
+                      CarouselSlider.builder(
+
+                        itemBuilder: (_, i, index) => Image.network(
+                          widget.ads?.images?[i].url ?? "",
+                        ),
                         options: CarouselOptions(
+                          autoPlay: true,
                           viewportFraction: 0.97,
                           autoPlayAnimationDuration:
                               Duration(milliseconds: 300),
@@ -80,6 +78,7 @@ class _ApartmentState extends State<Apartment> {
                             });
                           },
                         ),
+                        itemCount: widget.ads?.images?.length,
                       ),
                       Positioned(
                         bottom: 0,
@@ -91,7 +90,7 @@ class _ApartmentState extends State<Apartment> {
                             width: 60,
                             height: 30,
                             color: Color(0xffF23B5F),
-                            child: Txt('${++v1}/$v2', Colors.white, 18,
+                            child: Txt('${v1}/${widget.ads?.images?.length}', Colors.white, 18,
                                 FontWeight.bold),
                           ),
                         ),
@@ -116,11 +115,8 @@ class _ApartmentState extends State<Apartment> {
                                 textDirection: TextDirection.rtl,
                                 child: SingleChildScrollView(
                                   scrollDirection: Axis.horizontal,
-                                  child: Txt(
-                                     widget.ads?.email??"tttt",
-                                      Color(0xffF23B5F),
-                                      13,
-                                      FontWeight.normal),
+                                  child: Txt(widget.ads?.price ?? "tttt",
+                                      Color(0xffF23B5F), 13, FontWeight.normal),
                                 ),
                               ),
                             ),

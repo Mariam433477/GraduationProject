@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/_http/utils/body_decoder.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:sakenny/screens/ChangePassword.dart';
 import 'package:sakenny/screens/Profile.dart';
 import 'dart:io';
@@ -175,5 +176,12 @@ class AuthController extends GetxController {
       Newpassword:NewPass.text,
     );
   }
+  final image="".obs;
+select() async {
+  final ImagePicker picker = ImagePicker();
 
+final  imageXFiLe = await picker.pickImage(source: ImageSource.gallery);
+image.value=imageXFiLe!.path;
 }
+}
+
