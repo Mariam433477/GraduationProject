@@ -45,7 +45,9 @@ class _HomeState extends State<Home> {
           ),
           onPressed: () {
             setState(() {
-              Get.toNamed('/Apartment');
+              Get.toNamed(
+                '/Apartment',
+              );
             });
           },
         ),

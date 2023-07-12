@@ -7,37 +7,31 @@ import '../components/detailsAnnouncement.dart';
 import '../components/home.dart';
 import '../components/shared.dart';
 
-class TermsAndServices extends StatefulWidget {
-  const TermsAndServices({Key? key}) : super(key: key);
-
-  @override
-  State<TermsAndServices> createState() => _TermsAndServicesState();
-}
-
-class _TermsAndServicesState extends State<TermsAndServices> {
+class TermsAndServices extends StatelessWidget {
+  TermsAndServices({super.key});
   List<String> List1 = [
     'Without Limitation',
     'Female',
     'Male',
-  ];
+  ].obs;
   String itemSelected1 = 'Without Limitation';
 
   List<String> List2 = ['Egypt', 'china', 'Amercia'];
   String itemSelected2 = 'Egypt';
-  bool wvalue1 = false;
-  bool fvalue1 = false;
-  bool kvalue1 = false;
-  bool bvalue1 = false;
-  bool rvalue1 = false;
-  bool hvalue1 = false;
-  bool mvalue1 = false;
-  bool cvalue1 = false;
-  bool lvalue1 = false;
-  bool dvalue1 = false;
-  bool npvalue1 = false;
-  bool nsvalue1 = false;
-  bool scbvalue1 = false;
-  bool scwvalue1 = false;
+  var wvalue = false.obs;
+  var fvalue = false.obs;
+  var kvalue = false.obs;
+  var bvalue = false.obs;
+  var rvalue = false.obs;
+  var hvalue = false.obs;
+  var mvalue = false.obs;
+  var cvalue = false.obs;
+  var lvalue = false.obs;
+  var dvalue = false.obs;
+  var npvalue = false.obs;
+  var nsvalue = false.obs;
+  var scbvalue = false.obs;
+  var scwvalue = false.obs;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,9 +46,7 @@ class _TermsAndServicesState extends State<TermsAndServices> {
             color: Color(0xffF23B5F),
           ),
           onPressed: () {
-            setState(() {
-              Get.toNamed('/Home');
-            });
+            Get.toNamed('/Home');
           },
         ),
         title: RichText(
@@ -244,65 +236,51 @@ class _TermsAndServicesState extends State<TermsAndServices> {
                   children: [
                     Check(
                       'Wifi',
-                      wvalue1,
+                      wvalue,
                       () {
-                        setState(() {
-                          wvalue1 = !wvalue1;
-                        });
+                        wvalue.value = !wvalue.value;
                       },
                     ),
                     Check(
                       'Kitchen',
-                      kvalue1,
+                      kvalue,
                       () {
-                        setState(() {
-                          kvalue1 = !kvalue1;
-                        });
+                        kvalue.value = !kvalue.value;
                       },
                     ),
                     Check(
                       'BathRoom',
-                      bvalue1,
+                      bvalue,
                       () {
-                        setState(() {
-                          bvalue1 = !bvalue1;
-                        });
+                        bvalue.value = !bvalue.value;
                       },
                     ),
                     Check(
                       'Resturant',
-                      rvalue1,
+                      rvalue,
                       () {
-                        setState(() {
-                          rvalue1 = !rvalue1;
-                        });
+                        rvalue.value = !rvalue.value;
                       },
                     ),
                     Check(
                       'Heater',
-                      hvalue1,
+                      hvalue,
                       () {
-                        setState(() {
-                          hvalue1 = !hvalue1;
-                        });
+                        hvalue.value = !hvalue.value;
                       },
                     ),
                     Check(
                       'Washing Machine',
-                      mvalue1,
+                      mvalue,
                       () {
-                        setState(() {
-                          mvalue1 = !mvalue1;
-                        });
+                        mvalue.value = !mvalue.value;
                       },
                     ),
                     Check(
                       'Cooker',
-                      cvalue1,
+                      cvalue,
                       () {
-                        setState(() {
-                          cvalue1 = !cvalue1;
-                        });
+                        cvalue.value = !cvalue.value;
                       },
                     ),
                   ],
@@ -367,29 +345,23 @@ class _TermsAndServicesState extends State<TermsAndServices> {
                   children: [
                     Check(
                       'Free Breakfast',
-                      fvalue1,
+                      fvalue,
                       () {
-                        setState(() {
-                          fvalue1 = !fvalue1;
-                        });
+                        fvalue.value = !fvalue.value;
                       },
                     ),
                     Check(
                       'Launch',
-                      kvalue1,
+                      lvalue,
                       () {
-                        setState(() {
-                          lvalue1 = !lvalue1;
-                        });
+                        lvalue.value = !lvalue.value;
                       },
                     ),
                     Check(
                       'Dinner',
-                      bvalue1,
+                      dvalue,
                       () {
-                        setState(() {
-                          dvalue1 = !dvalue1;
-                        });
+                        dvalue.value = !dvalue.value;
                       },
                     ),
                   ],
@@ -454,38 +426,30 @@ class _TermsAndServicesState extends State<TermsAndServices> {
                   children: [
                     Check(
                       'No Pets',
-                      fvalue1,
+                      npvalue,
                       () {
-                        setState(() {
-                          npvalue1 = !npvalue1;
-                        });
+                        npvalue.value = !npvalue.value;
                       },
                     ),
                     Check(
                       'No Smoking',
-                      kvalue1,
+                      nsvalue,
                       () {
-                        setState(() {
-                          nsvalue1 = !nsvalue1;
-                        });
+                        nsvalue.value = !nsvalue.value;
                       },
                     ),
                     Check(
                       'Share Cleaning Bill',
-                      bvalue1,
+                      scbvalue,
                       () {
-                        setState(() {
-                          scbvalue1 = !scbvalue1;
-                        });
+                        scbvalue.value = !scbvalue.value;
                       },
                     ),
                     Check(
                       'Share Cleaning Works',
-                      bvalue1,
+                      scwvalue,
                       () {
-                        setState(() {
-                          scwvalue1 = !scwvalue1;
-                        });
+                        scwvalue.value = !scwvalue.value;
                       },
                     ),
                   ],

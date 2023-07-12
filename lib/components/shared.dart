@@ -115,7 +115,6 @@ Widget Terms(String text, Color color, var icon) {
 Widget Starts(rate, bool disable, action) {
   return Container(
       width: 100,
-      //height: 55,
       child: RatingBar.builder(
         initialRating: rate,
         ignoreGestures: disable,
@@ -248,13 +247,15 @@ Widget label(String txt, Color color, double padd) {
   );
 }
 
-Widget Check(String txt, bool val, change) {
+Widget Check(String txt, Rx<bool> val, change) {
   return ListTile(
     onTap: change,
     horizontalTitleGap: 10,
-    leading: Icon(
-      val ? Icons.check_box : Icons.check_box_outline_blank,
-      color: Colors.pinkAccent,
+    leading: Obx(
+      () => Icon(
+        val.isTrue ? Icons.check_box : Icons.check_box_outline_blank,
+        color: Colors.pinkAccent,
+      ),
     ),
     title: Txt(txt, Colors.black, 15.0, FontWeight.w500),
   );
