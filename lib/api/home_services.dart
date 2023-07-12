@@ -14,7 +14,6 @@ class HomeService {
         GetAllAdsModel model = GetAllAdsModel.fromJson(response.data);
         print(model.toJson());
         return model;
-
       }
     } catch (e) {}
   }

@@ -98,7 +98,7 @@ Widget mainBox (String image,String location,String price,String subTitle){
       ),
     );
 }
- Widget dropDown(List<String>items,change ,bool showSearchBox,Color bgcolor , Color iconColor , Color TexbtColor,double w){
+ Widget dropDown(List<String>items,change ,bool showSearchBox,Color bgcolor , Color iconColor , Color TextColor,double w){
   return
     Container(
       decoration: BoxDecoration(
@@ -112,7 +112,7 @@ Widget mainBox (String image,String location,String price,String subTitle){
         ),
       ),
       width: w,
-      height: height*0.08,
+      height: height*0.07,
       child:DropdownSearch<String>(
         items: items,
         popupProps: PopupProps.menu(
@@ -136,45 +136,3 @@ Widget mainBox (String image,String location,String price,String subTitle){
       ),
     );
  }
-class DropDown extends StatelessWidget {
-  final double width;
-  final Color color;
-  final List items;
-  final Function change;
-  const DropDown({Key? key, required this.width, required this.items, required this.change,required this.color}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    var border=OutlineInputBorder(borderRadius: const BorderRadius.all(Radius.circular(10)),
-        borderSide: BorderSide(width: 3, color:Colors.white));
-    return Container(width: width,
-      margin: EdgeInsets.only(bottom: 15),
-      child: DropdownButtonHideUnderline(
-        child: DropdownButtonFormField(dropdownColor:Colors.white,
-            decoration: InputDecoration(
-              filled: true,
-                fillColor: Colors.white,
-                focusColor: Colors.white, hoverColor: Colors.white,
-                enabledBorder: border, focusedBorder: border, border:border,
-                contentPadding: const EdgeInsets.symmetric(horizontal: 5,vertical: 17)
-            ),
-            hint: Txt(items.isEmpty?"":items[0]["name"],color,20,FontWeight.normal),
-            icon: SizedBox(width: 25,
-                child:FaIcon(FontAwesomeIcons.caretDown,size: 30,color: Color(0xff25334D),)),
-            items: items.map<DropdownMenuItem<String>>((e) {
-              return DropdownMenuItem<String>(value: "${e['id']}",
-                  child: Container(width: width-35,
-                    alignment: Alignment.topLeft,
-                    // child: Txt(e[itemName],const Color(0xff8b8d9e), 20, FontWeight.w500),
-                    child: Txt(e["name"],color,20,FontWeight.normal),
-                  ));
-            }).toList(),
-            onChanged: (val){
-              change(val);
-            }
-        ),
-
-      ),
-    );
-  }
-}

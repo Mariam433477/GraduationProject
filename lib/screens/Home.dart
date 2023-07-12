@@ -8,8 +8,6 @@ import 'package:sakenny/components/shared.dart';
 import 'package:sakenny/controller/home_controller.dart';
 import 'package:sakenny/screens/Apartment.dart';
 
-import '../components/governate.dart';
-
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -18,21 +16,16 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  // List<String> countriesList = [
-  //   'Egypt',
-  //   'Afghanistan',
-  //   'America',
-  //   'China',
-  //   'Indonesia'
-  // ];
-  // String itemSelected = 'Egypt';
-  // List<String> countriesList2 = ['Tanta', 'Alex', 'shebin Elkom', 'china'];
-  // String itemSelected2 = 'Tanta';
-  String governorateId="1";
-  String cityId="1";
-  List newCities=[];
-
-
+  List<String> countriesList = [
+    'Egypt',
+    'Afghanistan',
+    'America',
+    'China',
+    'Indonesia'
+  ];
+  String itemSelected = 'Egypt';
+  List<String> countriesList2 = ['Tanta', 'Alex', 'shebin Elkom', 'china'];
+  String itemSelected2 = 'Tanta';
   List<String> countriesList1 = [
     'Room',
     'Bed',
@@ -106,37 +99,9 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       width: width * 0.9,
-                      height: height * 0.70,
+                      height: height * 0.60,
                       child: Column(
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 20.0, top: 15, bottom: 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Txt('governorate', Colors.white, 20,
-                                    FontWeight.normal),
-                              ],
-                            ),
-                          ),
-                          // dropDown(countriesList2, (value) {
-                          //   setState(() {
-                          //     itemSelected2 = value;
-                          //   });
-                          // }, true, Colors.white, Color(0xff25334D),
-                          //     Color(0xff25334D), width * 0.8),
-                          DropDown (width: width*0.8,color: Colors.black
-                            ,items: governorates,change: (value){
-                            print(value);
-                            setState(() {
-                              governorateId=value;
-                              newCities=getCities(value);
-                              print(newCities);
-                            });
-                            String governorate=getCityName(governorates, value);
-                            print(governorate);
-                          },),
                           Padding(
                             padding: const EdgeInsets.only(
                                 left: 20.0, top: 15, bottom: 15),
@@ -148,23 +113,29 @@ class _HomeState extends State<Home> {
                               ],
                             ),
                           ),
-                          // dropDown(countriesList, (value) {
-                          //   setState(() {
-                          //     itemSelected = value;
-                          //   });
-                          // }, true, Colors.white, Color(0xff25334D),
-                          //     Color(0xff25334D), width * 0.8),
-                          SingleChildScrollView(
-                            child: DropDown (width:width*0.8,color: Colors.black,items: newCities,change: (value){
-                              print(value);
-                              cityId=value;
-                              setState(() {
-                                String NameCity=getCityName(newCities, value);
-                                print(NameCity);
-                              });
-                            },
+                          dropDown(countriesList, (value) {
+                            setState(() {
+                              itemSelected = value;
+                            });
+                          }, true, Colors.white, Color(0xff25334D),
+                              Color(0xff25334D), width * 0.8),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                left: 20.0, top: 15, bottom: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Txt('governorate', Colors.white, 20,
+                                    FontWeight.normal),
+                              ],
                             ),
                           ),
+                          dropDown(countriesList2, (value) {
+                            setState(() {
+                              itemSelected2 = value;
+                            });
+                          }, true, Colors.white, Color(0xff25334D),
+                              Color(0xff25334D), width * 0.8),
                           Padding(
                             padding: const EdgeInsets.only(
                                 left: 20.0, top: 15, bottom: 15),
@@ -214,16 +185,16 @@ class _HomeState extends State<Home> {
                         SizedBox(
                           width: width * 0.07,
                         ),
-                        // MainBtn(
-                        //     Txt('Drop Down', Colors.white, 20,
-                        //         FontWeight.normal),
-                        //     width * 0.4,
-                        //     height * 0.07,
-                        //     10,
-                        //     Color(0xffF23B5F),
-                        //     Color(0xffE0E0E0), () {
-                        //   Get.toNamed("/SortOf");
-                        // }),
+                        MainBtn(
+                            Txt('Drop Down', Colors.white, 20,
+                                FontWeight.normal),
+                            width * 0.4,
+                            height * 0.07,
+                            10,
+                            Color(0xffF23B5F),
+                            Color(0xffE0E0E0), () {
+                          Get.toNamed("/SortOf");
+                        }),
                       ],
                     ),
                     SizedBox(
