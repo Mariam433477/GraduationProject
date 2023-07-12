@@ -36,6 +36,7 @@ void uploadImage(){
               imageXFiLe = await picker.pickImage(source: ImageSource.gallery);
 print(imageXFiLe?.path??""
 +"sssssss");
+
               },
               child:            Center(
               child: Container(

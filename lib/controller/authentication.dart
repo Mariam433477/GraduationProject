@@ -148,7 +148,7 @@ class AuthController extends GetxController {
     return msg;
   }
 
-  register() async {
+  Future register() async {
     await registerApi(
         FullName: fullname.text,
         email: email.text,

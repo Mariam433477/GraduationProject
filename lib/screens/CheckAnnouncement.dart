@@ -88,6 +88,7 @@ class _CheckAnnouncementState extends State<CheckAnnouncement> {
               SizedBox(
                 height: 10,
               ),
+
               containersOfAnnouncement(
                 'Pictures',
                 FontAwesomeIcons.photoFilm,

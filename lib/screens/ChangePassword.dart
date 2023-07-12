@@ -81,6 +81,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                 ],
               ),
             ),
+
     Txt(msg ,Color(0xffF23B5F) , 20, FontWeight.normal),
             Container(height: height*0.55,
               alignment: Alignment.bottomCenter,

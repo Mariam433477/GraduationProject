@@ -63,6 +63,7 @@ class _EditProfileState extends State<EditProfile> {
                       GestureDetector(
                         child: Obx(() => authController.image.value != ""
                             ? Container(
+
                           clipBehavior: Clip.antiAlias,
                                 width: 100,
                                 height: 100,

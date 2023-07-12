@@ -602,10 +602,10 @@ class _TermsAndServicesState extends State<TermsAndServices> {
                   Color(0xffF23B5F),
                   Color(0xffF23B5F), () async {
                 print(
-                  widget.location!.latitude.toString(),
+                  widget.location!.latitude??"",
                 );
                 print(
-                  widget.location!.latitude.toString(),
+                  widget.location!.latitude??"",
                 );
                 // await  controller.decodeLatLong(latLng: LatLng(widget.location!.latitude,
                 //       widget.location!.latitude));

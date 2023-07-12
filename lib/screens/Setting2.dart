@@ -13,6 +13,7 @@ class Setting2 extends StatefulWidget {
   State<Setting2> createState() => _Setting2State();
 }
 
+
 class _Setting2State extends State<Setting2> {
   AuthController authController=Get.put(AuthController());
   @override

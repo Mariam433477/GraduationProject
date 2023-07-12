@@ -11,9 +11,10 @@ class HomeService {
       print(response.statusCode);
       print(response.data);
       if (response.statusCode == 200) {
-        GetAllAdsModel model = GetAllAdsModel.fromJson(response.data);
+        GetAllAdsModel model = GetAllAdsModel.fromJson(response.data,'ads');
         print(model.toJson());
         return model;
+
       }
     } catch (e) {}
   }

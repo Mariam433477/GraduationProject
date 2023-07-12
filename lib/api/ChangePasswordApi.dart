@@ -9,6 +9,7 @@ ChangePasswordApi({String ?password,String ?Newpassword}) async {
       Uri.parse(url), body: json.encode({
       "old_password": password,
       "new_password": Newpassword
+
   }), headers: {
     'Authorization':'Bearer $Token',
     'Content-Type': 'application/json',

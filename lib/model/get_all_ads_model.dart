@@ -4,12 +4,12 @@ class GetAllAdsModel {
       this.flag, 
       this.ads,});
 
-  GetAllAdsModel.fromJson(dynamic json) {
+  GetAllAdsModel.fromJson(dynamic json,String name) {
     message = json['Message'];
     flag = json['Flag'];
-    if (json['ads'] != null) {
+    if (json[name] != null) {
       ads = [];
-      json['ads'].forEach((v) {
+      json[name].forEach((v) {
         ads?.add(Ads.fromJson(v));
       });
     }
@@ -48,7 +48,9 @@ class Ads {
       this.pricePer, 
       this.email, 
       this.phoneNumber, 
-      this.images,});
+      this.images,
+    this.date,
+  });
 
   Ads.fromJson(dynamic json) {
     id = json['id'];
@@ -66,6 +68,7 @@ class Ads {
     terms = json['terms'] != null ? json['terms'].cast<String>() : [];
     pricePer = json['price_per'];
     email = json['email'];
+    date=json['creation_date'];
     phoneNumber = json['phone_number'];
     if (json['images'] != null) {
       images = <ImagesModel>[];
@@ -90,6 +93,7 @@ class Ads {
   String? pricePer;
   String? email;
   String? phoneNumber;
+  String? date;
   List<ImagesModel>? images;
 
   Map<String, dynamic> toJson() {
@@ -109,6 +113,7 @@ class Ads {
     map['terms'] = terms;
     map['price_per'] = pricePer;
     map['email'] = email;
+    map['creation_date'] = date;
     map['phone_number'] = phoneNumber;
     if (images != null) {
       map['images'] = images?.map((v) => v.toJson()).toList();

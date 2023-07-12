@@ -20,6 +20,7 @@ CreateAdsApi() async{
   var request = http.MultipartRequest('POST', Uri.parse('https://sakkeny.onrender.com/ads/create'));
   request.fields.addAll(
       {
+
     'title': "Title",
     'space_type': 'flat',
     'description': 'blaBlaBlaBlaBla',

@@ -76,6 +76,7 @@ class _PriceState extends State<Price> {
           )
         ],
       ),
+
       body: SingleChildScrollView(
         child: Stack(
           children: [

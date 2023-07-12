@@ -15,7 +15,9 @@ class CreateAdsModel {
       this.lat, 
       this.lng, 
       this.terms, 
-      this.images,});
+      this.images,
+    this.date,
+  });
 
   CreateAdsModel.fromJson(dynamic json) {
     title = json['title'];
@@ -34,6 +36,7 @@ class CreateAdsModel {
     lng = json['lng'];
     terms = json['terms'];
     images = json['images'];
+    date = json['creation_date'];
   }
   String? title;
   String? spaceType;
@@ -51,6 +54,7 @@ class CreateAdsModel {
   String? lng;
   String? terms;
   String? images;
+  String? date;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -70,6 +74,7 @@ class CreateAdsModel {
     map['lng'] = lng;
     map['terms'] = terms;
     map['images'] = images;
+    map['creation_date']=date;
     return map;
   }
 

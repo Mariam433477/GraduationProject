@@ -48,6 +48,7 @@ void main() async {
     ),
     home: token == null ? SplashScreen() : Home(),
     getPages: [
+
       GetPage(name: '/SplashScreen', page: () => SplashScreen()),
       GetPage(name: '/SignUp', page: () => SignUp()),
       GetPage(name: '/SignIn', page: () => SignIn()),

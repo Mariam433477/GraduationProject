@@ -16,6 +16,7 @@ ProfileApi() async {
    if(response.statusCode==200){
      user u=user.fromJson(jsonDecode(response.body));
      print(jsonDecode(response.body));
+
      return u;
    }
 

@@ -78,7 +78,7 @@ class _OrderOfState extends State<OrderOf> {
                         const SizedBox(
                           width: 5,
                         ),
-                        Txt("Price Only", Colors.black, 17, FontWeight.w100),
+                        Txt("Price Only", Colors.black, 17, FontWeight.bold),
                       ],
                     ),
                     Row(
@@ -97,7 +97,7 @@ class _OrderOfState extends State<OrderOf> {
                           width: 5,
                         ),
                         Txt("Evaluation Only", Colors.black, 17,
-                            FontWeight.w100),
+                            FontWeight.bold),
                       ],
                     ),
                     Row(
@@ -116,7 +116,7 @@ class _OrderOfState extends State<OrderOf> {
                           width: 5,
                         ),
                         Txt("Price and Evaluation", Colors.black, 17,
-                            FontWeight.w100),
+                            FontWeight.bold),
                       ],
                     ),
                   ],

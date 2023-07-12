@@ -14,6 +14,7 @@ Widget containersOfAnnouncement(String Text, var icon, Color color,
       width: width * 0.9,
       height: height * 0.07,
       child: Row(
+
         children: [
           SizedBox(
             width: 10,

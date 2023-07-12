@@ -9,6 +9,7 @@ class SortOf extends StatefulWidget {
   State<SortOf> createState() => _SortOfState();
 }
 
+
 class _SortOfState extends State<SortOf> {
   List type = [
     {"title": 'Wifi', "checked": true},

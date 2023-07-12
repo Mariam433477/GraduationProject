@@ -15,6 +15,7 @@ class user {
     flag = json['Flag'];
   }
 
+
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['Message'] = this.message;

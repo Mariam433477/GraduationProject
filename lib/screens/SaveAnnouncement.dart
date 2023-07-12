@@ -174,6 +174,7 @@ class _SaveAnnouncementState extends State<SaveAnnouncement> {
                     SizedBox(
                       height: 30,
                     ),
+
                     containersOfAnnouncement(
                         'Publish Announcement',
                         FontAwesomeIcons.telegram,

@@ -12,6 +12,8 @@ import '../controller/authentication.dart';
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
 
+
+
   @override
   State<SignUp> createState() => _SignUpState();
 }

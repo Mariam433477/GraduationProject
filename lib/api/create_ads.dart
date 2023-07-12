@@ -35,6 +35,7 @@ class CreateAdsService {
     final response = await dio.post("https://sakkeny.onrender.com/ads/create",
         options: Options(headers: {
         'Content-Type': 'application/json',
+
         'Accept': 'application/json',
           'Authorization': 'Bearer $token',
         }),

@@ -125,6 +125,7 @@ class _SignInState extends State<SignIn> {
                             Color(0xfff9f9f9), () {
                           Get.toNamed("/ResetPassword");
                         }),
+
                       ],
                     ),
                   ),

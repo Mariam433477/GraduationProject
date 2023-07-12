@@ -253,6 +253,7 @@ Widget Check(String txt, bool val, change) {
     onTap: change,
     horizontalTitleGap: 10,
     leading: Icon(
+
       val ? Icons.check_box : Icons.check_box_outline_blank,
       color: Colors.pinkAccent,
     ),

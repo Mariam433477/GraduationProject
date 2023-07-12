@@ -303,62 +303,62 @@ class _PictureState extends State<Picture> {
                   SizedBox(
                     height: 20,
                   ),
-                  // SizedBox(
-                  //   height: height * 0.5,
-                  //   width: width * 0.9,
-                  //   child: GridView.builder(
-                  //     itemCount: images.length,
-                  //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  //         crossAxisCount: 2,
-                  //         crossAxisSpacing: 5.0,
-                  //         mainAxisSpacing: 8.0,
-                  //         childAspectRatio: 1.5),
-                  //     itemBuilder: (BuildContext context, int index) {
-                  //       return Container(
-                  //         decoration: BoxDecoration(
-                  //             border: Border.all(width: 1, color: Colors.grey),
-                  //             borderRadius: BorderRadius.circular(5)),
-                  //         child: Stack(
-                  //           children: [
-                  //             Image.asset(
-                  //               '${images[index]['img']}',
-                  //               // repeat: ImageRepeat.repeat,
-                  //             ),
-                  //             Positioned(
-                  //               top: .0,
-                  //               left: 0,
-                  //               child: Container(
-                  //                 padding: EdgeInsets.zero,
-                  //                 color: Color(0xffF23B5F),
-                  //                 child: IconButton(
-                  //                   icon: Icon(
-                  //                     Icons.delete,
-                  //                     color: Colors.white,
-                  //                   ),
-                  //                   onPressed: () {
-                  //                     setState(() {
-                  //                       images.remove(images[index]);
-                  //                     });
-                  //                   },
-                  //                 ),
-                  //               ),
-                  //             ),
-                  //             Positioned(
-                  //               bottom: 0,
-                  //               right: 0,
-                  //               child: Container(
-                  //                 height: 20,
-                  //                 color: Color(0xffF23B5F),
-                  //                 child: Txt('${images[index]['title']}',
-                  //                     Colors.white, 17, FontWeight.normal),
-                  //               ),
-                  //             ),
-                  //           ],
-                  //         ),
-                  //       );
-                  //     },
-                  //   ),
-                  // ),
+                  SizedBox(
+                    height: height * 0.5,
+                    width: width * 0.9,
+                    child: GridView.builder(
+                      itemCount: images.length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 5.0,
+                          mainAxisSpacing: 8.0,
+                          childAspectRatio: 1.5),
+                      itemBuilder: (BuildContext context, int index) {
+                        return Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(width: 1, color: Colors.grey),
+                              borderRadius: BorderRadius.circular(5)),
+                          child: Stack(
+                            children: [
+                              Image.asset(
+                                '${images[index]['img']}',
+                                // repeat: ImageRepeat.repeat,
+                              ),
+                              Positioned(
+                                top: .0,
+                                left: 0,
+                                child: Container(
+                                  padding: EdgeInsets.zero,
+                                  color: Color(0xffF23B5F),
+                                  child: IconButton(
+                                    icon: Icon(
+                                      Icons.delete,
+                                      color: Colors.white,
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        images.remove(images[index]);
+                                      });
+                                    },
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                bottom: 0,
+                                right: 0,
+                                child: Container(
+                                  height: 20,
+                                  color: Color(0xffF23B5F),
+                                  child: Txt('${images[index]['title']}',
+                                      Colors.white, 17, FontWeight.normal),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                  ),
                   SizedBox(
                     height: 50,
                   ),

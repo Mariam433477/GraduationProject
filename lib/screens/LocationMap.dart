@@ -89,6 +89,7 @@ class _LocationMapState extends State<LocationMap> {
                 setState(() {});
                 print(loc1);
               },
+
               zoomGesturesEnabled: true,
               //enable Zoom in, out on map
               initialCameraPosition: CameraPosition(

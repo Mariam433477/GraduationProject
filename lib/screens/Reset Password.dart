@@ -47,6 +47,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                   passwordObscured=!passwordObscured;
                 });
               },
+
               icon: Icon(
                 passwordObscured
                     ? Icons.visibility_off

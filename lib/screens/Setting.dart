@@ -7,6 +7,7 @@ import 'package:sakenny/components/shared.dart';
 class Setting extends StatefulWidget {
   const Setting({Key? key}) : super(key: key);
 
+
   @override
   State<Setting> createState() => _SettingState();
 }

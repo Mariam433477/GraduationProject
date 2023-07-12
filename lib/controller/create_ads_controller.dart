@@ -48,6 +48,7 @@ class CreateAdsController extends GetxController {
   sendData({CreateAdsModel? createAdsModel}) async {
     print("Create");
 
+
     // await decodeLatLong(
     //     latLng: LatLng(double.tryParse(createAdsModel!.lat!)!,
     //         double.tryParse(createAdsModel.lng!)!));

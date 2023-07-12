@@ -206,6 +206,7 @@ class _DetailsOfAnnouncementState extends State<DetailsOfAnnouncement> {
                         //     selectedItem: itemSelected1,
                         //   ),
                         // ),
+
                         dropDown(List1, (value) {
                           setState(() {
                             itemSelected1 = value;

@@ -9,6 +9,7 @@ EditProfileApi({String ?FullName,String ?email,String ?phone}) async {
       Uri.parse(url), body: json.encode({
       "new_fullname":FullName,
       "new_email": email,
+
       "new_phone_number": phone
   }), headers: {
     'Authorization':'Bearer $Token ',
