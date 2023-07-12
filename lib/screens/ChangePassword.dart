@@ -81,7 +81,6 @@ class _ChangePasswordState extends State<ChangePassword> {
                 ],
               ),
             ),
-
     Txt(msg ,Color(0xffF23B5F) , 20, FontWeight.normal),
             Container(height: height*0.55,
               alignment: Alignment.bottomCenter,
@@ -91,7 +90,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                 msg=authController.validatechangepassword();
                 });
 
-          if(msg.isEmpty){
+          if(msg!=null){
         //========================start signing up or route to code/home screen============
         authController.changepassword();
   }}),

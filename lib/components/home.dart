@@ -16,7 +16,6 @@ Widget mainBox (String image,String location,String governorate,String price,Str
               height: 150,
               decoration:
               BoxDecoration(
-
                 borderRadius: BorderRadius.only(topRight:Radius.circular(5),topLeft:Radius.circular(5)
                 ),
                 image: DecorationImage(image:NetworkImage(image),fit:BoxFit.fill),

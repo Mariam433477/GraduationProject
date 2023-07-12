@@ -29,6 +29,9 @@ import 'package:sakenny/screens/TermsAndServices.dart';
 import 'package:sakenny/screens/language.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'screens/appear_of_announcement.dart';
+import 'screens/check_of_announcement.dart';
+
 void main() async {
   //store in shared Preferences
   WidgetsFlutterBinding.ensureInitialized();
@@ -127,6 +130,9 @@ class _sakennyState extends State<sakenny> {
         GetPage(name: '/SaveAnnouncement', page: () => SaveAnnouncement()),
         GetPage(name: '/CheckAnnouncement', page: () => CheckAnnouncement()),
         GetPage(name: '/Apartment', page: () => Apartment()),
+        GetPage(
+            name: '/CheckTheAnnouncement', page: () => CheckTheAnnouncement()),
+        GetPage(name: '/AppearAnnouncement', page: () => AppearAnnouncement()),
       ],
     );
   }
