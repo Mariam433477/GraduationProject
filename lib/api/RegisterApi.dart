@@ -17,5 +17,6 @@ registerApi({String ?FullName,String ?email,String ?phone,
     json.decode(response.body);
     print(response.statusCode);
     print(response.body);
+    print(response);
     return response;
 }

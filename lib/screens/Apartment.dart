@@ -22,16 +22,16 @@ class Apartment extends StatefulWidget {
 class _ApartmentState extends State<Apartment> {
   int v1 = 1;
   int v2 = 4;
-  String gender = 'Female';
-  String type = 'Room';
-  int price = 500;
-  int bedroom = 3;
-  int level = 2;
-  int bathroom = 1;
-  String area = '24m';
+  // String gender = 'Female';
+  // String type = 'Room';
+   int price = 500;
+  // int bedroom = 3;
+  // int level = 2;
+  // int bathroom = 1;
+  // String area = '24m';
   bool online = false, read = true, save = false;
-  double rate = 3;
-  double lat = 0.0, long = 0.0;
+  // double rate = 3;
+   double lat = 0.0, long = 0.0;
 
   // double saveRating = 3.0;
   @override
@@ -108,19 +108,25 @@ class _ApartmentState extends State<Apartment> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Starts(rate, false, saveRating),
+                            // Starts(rate, false, saveRating),
                             SizedBox(
                               width: width * 0.9 - 100,
-                              child: Directionality(
-                                textDirection: TextDirection.rtl,
-                                child: SingleChildScrollView(
+                              child:
+
+                                 SingleChildScrollView(
                                   scrollDirection: Axis.horizontal,
-                                  child: Txt(widget.ads?.price ?? "tttt",
-                                      Color(0xffF23B5F), 13, FontWeight.normal),
+                                  child:Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Txt('announcement Name', Color(0xffF23B5F), 15,
+                                          FontWeight.normal),
+                                      Txt(widget.ads!.title??"", Color(0xffF23B5F), 15,
+                                          FontWeight.normal),
+                                    ],
                                 ),
                               ),
-                            ),
-                          ],
+
+                            )],
                         ),
                         SizedBox(
                           height: 5,
@@ -136,12 +142,12 @@ class _ApartmentState extends State<Apartment> {
                                     color: Color(0xffF23B5F),
                                     size: 16,
                                   ),
-                                  Txt('  Egypt-Banha-Qalyubia',
+                                  Txt('Egypt-Banha-Qalyubia',
                                       Color(0xffF23B5F), 14, FontWeight.bold)
                                 ],
                               ),
                             ),
-                            Txt('1/2/2022', Color(0xffF23B5F), 15,
+                            Txt(widget.ads!.date??"", Color(0xffF23B5F), 15,
                                 FontWeight.normal)
                           ],
                         ),
@@ -173,7 +179,7 @@ class _ApartmentState extends State<Apartment> {
                           children: [
                             Txt('Type', Color(0xffF23B5F), 15,
                                 FontWeight.normal),
-                            Txt('$type', Color(0xffF23B5F), 15,
+                            Txt(widget.ads!.spaceType??"", Color(0xffF23B5F), 15,
                                 FontWeight.normal),
                           ],
                         ),
@@ -183,7 +189,7 @@ class _ApartmentState extends State<Apartment> {
                           children: [
                             Txt('Price', Color(0xffF23B5F), 15,
                                 FontWeight.normal),
-                            Txt('$price EGP / Month', Color(0xffF23B5F), 15,
+                            Txt("${widget.ads!.price}", Color(0xffF23B5F), 15,
                                 FontWeight.normal),
                           ],
                         ),
@@ -191,19 +197,9 @@ class _ApartmentState extends State<Apartment> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Txt('Area', Color(0xffF23B5F), 15,
+                            Txt("Description", Color(0xffF23B5F), 15,
                                 FontWeight.normal),
-                            Txt('$area', Color(0xffF23B5F), 15,
-                                FontWeight.normal),
-                          ],
-                        ),
-                        Divider(color: Color(0xffF23B5F)),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Txt('Bedrooms', Color(0xffF23B5F), 15,
-                                FontWeight.normal),
-                            Txt('$bedroom', Color(0xffF23B5F), 15,
+                            Txt(widget.ads!.description??"", Color(0xffF23B5F), 15,
                                 FontWeight.normal),
                           ],
                         ),
@@ -211,9 +207,9 @@ class _ApartmentState extends State<Apartment> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Txt('Level', Color(0xffF23B5F), 15,
+                            Txt( 'governorate', Color(0xffF23B5F), 15,
                                 FontWeight.normal),
-                            Txt('$level', Color(0xffF23B5F), 15,
+                            Txt(widget.ads!.governorate??"", Color(0xffF23B5F), 15,
                                 FontWeight.normal),
                           ],
                         ),
@@ -221,12 +217,22 @@ class _ApartmentState extends State<Apartment> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Txt('Bathrooms', Color(0xffF23B5F), 15,
+                            Txt("city", Color(0xffF23B5F), 15,
                                 FontWeight.normal),
-                            Txt('$bathroom', Color(0xffF23B5F), 15,
+                            Txt(widget.ads!.city??"", Color(0xffF23B5F), 15,
                                 FontWeight.normal),
                           ],
                         ),
+                        Divider(color: Color(0xffF23B5F)),
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //   children: [
+                        //     Txt("", Color(0xffF23B5F), 15,
+                        //         FontWeight.normal),
+                        //     Txt('$bathroom', Color(0xffF23B5F), 15,
+                        //         FontWeight.normal),
+                        //   ],
+                        // ),
                         Divider(color: Color(0xffF23B5F)),
                       ],
                     ),
@@ -304,21 +310,21 @@ class _ApartmentState extends State<Apartment> {
                           height: 8,
                         ),
                         Terms(
-                          '$gender+ Only',
+                          "${widget.ads!.gender==true?"male":"famale"}"+ 'Only',
                           Color(0xffF23B5F),
                           FontAwesomeIcons.person,
                         ),
                         Divider(color: Color(0xffF23B5F)),
-                        Terms('No Pets', Color(0xffF23B5F), Icons.pets),
+                        Terms(widget.ads!.terms!.isNotEmpty?widget.ads!.terms![0]:"", Color(0xffF23B5F), Icons.pets),
                         Divider(color: Color(0xffF23B5F)),
                         Terms(
-                          'No Smooking',
+                          widget.ads!.terms!.length==2?widget.ads!.terms![1]:"",
                           Color(0xffF23B5F),
                           Icons.no_meals,
                         ),
                         Divider(color: Color(0xffF23B5F)),
                         Terms(
-                          'Share Cleaing Works',
+                          widget.ads!.terms!.length==3?widget.ads!.terms![2]:"",
                           Color(0xffF23B5F),
                           FontAwesomeIcons.calendar,
                           // Icons.share_
@@ -353,21 +359,16 @@ class _ApartmentState extends State<Apartment> {
                             children: [
                               TextSpan(
                                 text:
-                                    'ثلاث غرف نوم مطبخ كبير حمام كبير تشطيب سوبر لوكس عداد كهرباء ومياة وغاز اسانسير تطل على شارع نادي الجمهورية جاهزة للسكن يوجد غسالة',
+                                     widget.ads!.description,
                                 style: TxtStyle(
-                                    'ثلاث غرف نوم مطبخ كبير حمام كبير تشطيب سوبر لوكس عداد كهرباء ومياة وغاز اسانسير تطل على شارع نادي الجمهورية جاهزة للسكن يوجد غسالة',
+                                     widget.ads!.description??"",
                                     Color(0xff25334D),
                                     15,
                                     FontWeight.bold),
                               ),
                               TextSpan(
-                                text: 'وواي فاي وفطار مجاني',
-                                style: TxtStyle('  وواي فاي وفطار مجاني',
-                                    Color(0xffF23B5F), 15, FontWeight.normal),
-                              ),
-                              TextSpan(
-                                text: 'للاستعلام تليفون 01010121314',
-                                style: TxtStyle(' للاستعلام تليفون 01010121314',
+                                text: widget.ads!.phoneNumber,
+                                style: TxtStyle(widget.ads!.phoneNumber??"",
                                     Color(0xff25334D), 15, FontWeight.normal),
                               ),
                             ],
@@ -462,7 +463,9 @@ class _ApartmentState extends State<Apartment> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   CallBtn('Call', FontAwesomeIcons.phone, Color(0xffF23B5F),
-                      Colors.white, width * 0.3, 30, 4, () {}),
+                      Colors.white, width * 0.3, 30, 4, () {
+                   print(widget.ads!.date??"") ;
+                      }),
                   CallBtn('SMS', FontAwesomeIcons.phone, Color(0xffF23B5F),
                       Colors.white, width * 0.3, 30, 4, () {}),
                 ],
@@ -474,10 +477,10 @@ class _ApartmentState extends State<Apartment> {
     );
   }
 
-  saveRating(double value) {
-    setState(() {
-      rate = value;
-    });
-    print(rate);
-  }
+  // saveRating(double value) {
+  //   setState(() {
+  //     rate = value;
+  //   });
+  //   print(rate);
+  // }
 }
