@@ -5,7 +5,9 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:sakenny/components/shared.dart';
 
+import '../api/ProfileApi.dart';
 import '../controller/authentication.dart';
+import '../model/userModel.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -16,6 +18,21 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile>
 {
+  user ?u;
+  getProfile()async{
+    u=await ProfileApi();
+    print(u?.fullname);
+    setState(() {
+
+    });
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getProfile();
+
+  }
   AuthController authController=Get.put(AuthController());
   @override
   Widget build(BuildContext context) {
@@ -36,28 +53,46 @@ class _ProfileState extends State<Profile>
         )
       ],
       ),
-      body: Column(
-        children: [
-          SizedBox(height: 200,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                GestureDetector(
-                  child:   CircleAvatar(radius:40,backgroundColor: Color(0xffF23B5F),
-                    child: CircleAvatar(radius:38,backgroundImage: AssetImage("assets/images/mariam.jpg"),),
-                  ),onTap: (){
-                  Get.toNamed("/Profile");
-                },
-                ),
-              ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(height: 200,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  GestureDetector(
+                    child:   CircleAvatar(radius:40,backgroundColor: Color(0xffF23B5F),
+                      child: CircleAvatar(radius:38,backgroundImage: AssetImage("assets/images/mariam.jpg"),),
+                    ),onTap: (){
+                    Get.toNamed("/Profile");
+                  },
+                  ),
+                ],
+              ),
             ),
-          ),
-          SizedBox(height: 10,),
-
-          Inputunderline(authController.fullname, 'Full Name', false, TextInputType.text, null),
-          Inputunderline(authController.email, 'E-mail', false, TextInputType.text, null),
-          Inputunderline(authController.email, 'phone', false, TextInputType.text, null),
-        ],
+            SizedBox(height: 10,),
+Padding(
+  padding: const EdgeInsets.only(left: 30),
+  child:   Align(alignment: Alignment.bottomLeft,
+      child: Txt('Fullname',Colors.black,20, FontWeight.normal)),
+),
+            Inputunderline(authController.fullname, '${u?.fullname}', false, TextInputType.text, null),
+            SizedBox(height: 5,),
+            Padding(
+              padding: const EdgeInsets.only(left: 30),
+              child:   Align(alignment: Alignment.bottomLeft,
+                  child: Txt('Email',Colors.black,20, FontWeight.normal)),
+            ),
+            Inputunderline(authController.email, '${u?.email}', false, TextInputType.text, null),
+            SizedBox(height: 5,),
+            Padding(
+              padding: const EdgeInsets.only(left: 30),
+              child:   Align(alignment: Alignment.bottomLeft,
+                  child: Txt('Phone',Colors.black,20, FontWeight.normal)),
+            ),
+            Inputunderline(authController.phone, '${u?.phoneNumber}', false, TextInputType.text, null),
+          ],
+        ),
       ),
 
 

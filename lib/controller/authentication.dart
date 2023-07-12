@@ -1,7 +1,16 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/_http/utils/body_decoder.dart';
+import 'package:get/get_rx/get_rx.dart';
+import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:get/get_utils/src/extensions/string_extensions.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:sakenny/screens/ChangePassword.dart';
+import 'package:sakenny/screens/Profile.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:io';
 
+<<<<<<< HEAD
 class AuthController extends GetxController {
 //====================== Button LogIN ================//
   var loading = false.obs;
@@ -13,11 +22,26 @@ class AuthController extends GetxController {
 
   //=========================//
   String msg = "";
+=======
+import '../api/ChangePasswordApi.dart';
+import '../api/EditProfile.dart';
+import '../api/LoginApi.dart';
+import '../api/ProfileApi.dart';
+import '../api/RegisterApi.dart';
+import '../api/ResetPasswordApi.dart';
+
+// import 'package:image_picker/image_picker.dart';
+class AuthController extends GetxController {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController passController = TextEditingController();
+>>>>>>> da54417f197b84a8b59cfe828034c555e33c2bd9
 
   String validPhone = r'(^(?:[+0]9)?[0-9]{10,12}$)',
       validEmail =
           r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+";
 
+<<<<<<< HEAD
   bool validEmailOrPhone(String val) {
     bool isEmail = RegExp(validEmail).hasMatch(val),
         isPhone = RegExp(validPhone).hasMatch(val),
@@ -28,12 +52,28 @@ class AuthController extends GetxController {
             val.length == 11;
 
     return isEmail || (isPhone && phoneStart);
+=======
+  bool validEmail1(String val) {
+    bool isEmail = RegExp(validEmail).hasMatch(val);
+    return isEmail;
+  }
+
+  bool validPhone1(String val) {
+    bool isPhone = RegExp(validPhone).hasMatch(val);
+    bool phoneStart = (val.startsWith("010") ||
+        val.startsWith("015") ||
+        val.startsWith("011") ||
+        val.startsWith("012")) &&
+        val.length == 11;
+    return (isPhone && phoneStart);
+>>>>>>> da54417f197b84a8b59cfe828034c555e33c2bd9
   }
 
   var fullname = TextEditingController(),
       phone = TextEditingController(),
       email = TextEditingController(),
       pass = TextEditingController(),
+      NewPass = TextEditingController(),
       confirmPass = TextEditingController(),
       announcement = TextEditingController(),
       remember = false.obs,
@@ -71,8 +111,15 @@ class AuthController extends GetxController {
     // else if(validEmailOrPhone(phone.text)){
     // msg="Enter valid phone or email";
     // }
+<<<<<<< HEAD
     else if (!validEmailOrPhone(email.text)) {
       msg = "Enter valid phone or email";
+=======
+    else if (!validEmail1(email.text)) {
+      msg = "Enter valid email";
+    } else if (!validPhone1(phone.text)) {
+      msg = "Enter valid phone";
+>>>>>>> da54417f197b84a8b59cfe828034c555e33c2bd9
     } else if (pass.text.isEmpty) {
       msg = "Enter pass";
     } else if (pass.text.length < 5) {
@@ -83,6 +130,7 @@ class AuthController extends GetxController {
       msg = "length must not be 5 number";
     } else if (confirmPass.text != pass.text) {
       msg = "does not match";
+<<<<<<< HEAD
     }
     return msg;
   }
@@ -101,13 +149,45 @@ class AuthController extends GetxController {
       msg = "Enter Your password";
     } else if (pass.text.length < 5) {
       msg = "length must not be 5 number";
+=======
+>>>>>>> da54417f197b84a8b59cfe828034c555e33c2bd9
+    }
+    return msg;
+  }
+
+<<<<<<< HEAD
+  validateResetPassword() {
+    String msg = "";
+    if (pass.text.isEmpty) {
+=======
+  validateSignIn() {
+    String msg = "";
+    if (emailController.text.isEmpty) {
+      msg = "Enter your Email";
+    }
+    // else if (!validPhone1(phoneController.text)) {
+    //   msg = "Enter valid phone";
+    // }
+    else if (!validEmail1(emailController.text)) {
+      msg = "Enter valid email";
+    } else if (passController.text.isEmpty) {
+      msg = "Enter Your password";
+    } else if (passController.text.length < 5) {
+      msg = "length must not be 5 number";
     }
     return msg;
   }
 
   validateResetPassword() {
     String msg = "";
-    if (pass.text.isEmpty) {
+    if (email.text.isEmpty) {
+      msg = "Enter your Email";
+    } else if (!validEmail1(email.text)) {
+      msg = "Enter valid email";
+    } else if (!validPhone1(phone.text)) {
+      msg = "Enter valid phone";
+    } else if (pass.text.isEmpty) {
+>>>>>>> da54417f197b84a8b59cfe828034c555e33c2bd9
       msg = "Enter Your password";
     } else if (pass.text.length < 5) {
       msg = "length must not be 5 number";
@@ -118,4 +198,76 @@ class AuthController extends GetxController {
     }
     return msg;
   }
+<<<<<<< HEAD
+=======
+
+  validatechangepassword() {
+    String msg = "";
+    if (confirmPass.text != NewPass.text) {
+      msg = "does not match";
+    }
+    return msg;
+  }
+
+  Future register() async {
+    await registerApi(
+        FullName: fullname.text,
+        email: email.text,
+        phone: phone.text,
+        password: pass.text);
+  }
+
+  Future login() async {
+    await LoginApi(
+        email: emailController.text,
+        phone: phoneController.text,
+        password: passController.text);
+  }
+
+  Future resetPassword() async {
+    await ResetPasswordApi(
+        email: email.text, phone: phone.text, password: pass.text);
+  }
+
+  editprofile() async {
+    final dio = Dio();
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var token = prefs.getString("token");
+    final response = await dio.put("https://sakkeny.onrender.com/users/update",
+        data: FormData.fromMap({
+        "new_fullname":fullname.text,
+        "new_email": email.text,
+        "new_phone_number": phone.text,
+        "images":await MultipartFile.fromFile(image.value,filename:image.value.split("/").last )
+        }),
+        options: Options(headers: {
+          'Authorization': 'Bearer $token ',
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }));
+    print(response.statusCode);
+    print(response.data);
+    // await EditProfileApi(
+    //   FullName: fullname.text,
+    //   email: email.text,
+    //   phone: phone.text,
+    // );
+  }
+
+  changepassword() async {
+    await ChangePasswordApi(
+      password: pass.text,
+      Newpassword: NewPass.text,
+    );
+  }
+
+  final image = "".obs;
+
+  select() async {
+    final ImagePicker picker = ImagePicker();
+
+    final imageXFiLe = await picker.pickImage(source: ImageSource.gallery);
+    image.value = imageXFiLe!.path;
+  }
+>>>>>>> da54417f197b84a8b59cfe828034c555e33c2bd9
 }

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">sakkeny</string>
+    <string name="facebook_app_id">1292412428375975</string>
+    <string name="fb_login_protocol_scheme">fb1292412428375975</string>
+    <string name="facebook_client_token">5ea72c6412a8a43179fc21c189872385</string>
+</resources>

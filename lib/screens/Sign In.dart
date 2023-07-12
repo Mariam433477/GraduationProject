@@ -1,20 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:sakenny/api/CreateAdsApi.dart';
 import 'package:sakenny/controller/authentication.dart';
 
 import '../components/shared.dart';
 
+<<<<<<< HEAD
 class SignIn extends StatelessWidget {
   SignIn({super.key});
   String msg = "";
   AuthController authController = Get.put(AuthController());
+=======
+class SignIn extends StatefulWidget {
+  const SignIn({Key? key}) : super(key: key);
+
+  @override
+  State<SignIn> createState() => _SignInState();
+}
+
+class _SignInState extends State<SignIn> {
+  String msg = "";
+  bool passwordObscured = true;
+  AuthController authController = Get.put(AuthController());
+
+>>>>>>> da54417f197b84a8b59cfe828034c555e33c2bd9
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: GestureDetector(
+<<<<<<< HEAD
           child: Icon(Icons.arrow_back, size: 30, color: Color(0xffF23B5F)),
+=======
+          child:
+              const Icon(Icons.arrow_back, size: 30, color: Color(0xffF23B5F)),
+>>>>>>> da54417f197b84a8b59cfe828034c555e33c2bd9
           onTap: () {
             Get.back();
           },
@@ -31,6 +52,7 @@ class SignIn extends StatelessWidget {
               Txt('Sign In', Color(0xffF23B5F), 25, FontWeight.bold),
               Image.asset('assets/images/Mobile login-amico.png',
                   width: width * 1.5, height: height * 0.4),
+<<<<<<< HEAD
               Input(authController.email, 'E-mail Or Phone', false,
                   TextInputType.text, null),
               SizedBox(height: 10),
@@ -51,6 +73,61 @@ class SignIn extends StatelessWidget {
                       ),
                     )),
               ),
+=======
+              Input(authController.emailController, 'E-mail', false,
+                  TextInputType.text, null,onChanged: (value) {
+                    print(value);
+                    emailAds=value;
+                  },),
+
+              // Container(decoration:BoxDecoration(borderRadius: BorderRadius.circular(5),color:Colors.white ),
+              //     height: 48,width:width*0.9,child:
+              // TextField(controller: authController.email,obscureText: false,
+              //   style: TxtStyle("",const Color(0xff8b8d9e), 15, FontWeight.w500),
+              //   decoration: InputDecoration(fillColor:Color(0xffececec),filled: true,
+              //     suffixIcon:null,border: InputBorder.none,focusedBorder: InputBorder.none,
+              //     hintText:'E-mail Or Phone',hintStyle: TxtStyle("",const Color(0xff8b8d9e), 15, FontWeight.w500),
+              //   ),
+              // )),
+              SizedBox(height: 10),
+              Input(
+                authController.passController,
+                'Password',
+                passwordObscured,
+                TextInputType.text,
+                IconButton(
+                  onPressed: () {
+                    setState(() {
+                      passwordObscured = !passwordObscured;
+                    });
+                  },
+                  icon: Icon(
+                    passwordObscured ? Icons.visibility_off : Icons.visibility,
+                  ),
+                ),
+              ),
+              // Container(decoration:BoxDecoration(borderRadius: BorderRadius.circular(5),
+              //     color:Colors.white ),height: 48,width:width*0.9,child:
+              // TextField(controller: authController.pass,obscureText:  passwordObscured,
+              //   style: TxtStyle("",const Color(0xff8b8d9e), 15, FontWeight.w500),
+              //   decoration: InputDecoration(fillColor:Color(0xffececec),filled: true,suffixIcon:IconButton(
+              //     onPressed: (){
+              //       setState(() {
+              //         passwordObscured=!passwordObscured;
+              //       });
+              //     },
+              //     icon: Icon(
+              //       passwordObscured
+              //           ? Icons.visibility_off
+              //           :Icons.visibility,
+              //     ),
+              //   ),
+              //     border: InputBorder.none,focusedBorder: InputBorder.none,
+              //     hintText:'Password',hintStyle: TxtStyle("",const Color(0xff8b8d9e), 15, FontWeight.w500),
+              //
+              //   ),
+              // )),
+>>>>>>> da54417f197b84a8b59cfe828034c555e33c2bd9
               SizedBox(
                 child: Container(
                   width: width * 0.9,
@@ -58,6 +135,7 @@ class SignIn extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
+<<<<<<< HEAD
                         Obx(
                           () => Checkbox(
                             value: authController.remember.value,
@@ -67,6 +145,17 @@ class SignIn extends StatelessWidget {
                               authController.remember.value = value!;
                             },
                           ),
+=======
+                        Checkbox(
+                          value: authController.remember.value,
+                          checkColor: Colors.white,
+                          activeColor: Color(0xffF23B5F),
+                          onChanged: (value) {
+                            setState(() {
+                              authController.remember.value = value!;
+                            });
+                          },
+>>>>>>> da54417f197b84a8b59cfe828034c555e33c2bd9
                         ),
                         Txt('Remember Me', Colors.grey, 15, FontWeight.normal),
                         SizedBox(
@@ -88,6 +177,7 @@ class SignIn extends StatelessWidget {
                 ),
               ),
               Txt(msg, Color(0xffF23B5F), 20, FontWeight.normal),
+<<<<<<< HEAD
               Obx(
                 () => MainBtn(
                     authController.loading.value == true
@@ -114,6 +204,24 @@ class SignIn extends StatelessWidget {
                   }
                 }),
               ),
+=======
+              MainBtn(
+                  Txt('Log In', Color(0xff8b8d9e), 20, FontWeight.bold),
+                  width * 0.9,
+                  height * 0.07,
+                  10,
+                  Color(0xffececec),
+                  Colors.white, () {
+                setState(() {
+                  msg = authController.validateSignIn();
+                });
+                if (msg.isEmpty) {
+                  //========================start signning in or route to code/home screen============
+                  //   Get.toNamed("/Home");
+                  authController.login();
+                }
+              }),
+>>>>>>> da54417f197b84a8b59cfe828034c555e33c2bd9
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

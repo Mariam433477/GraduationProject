@@ -1,16 +1,39 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:sakenny/controller/sign_up_controller.dart';
+import '../api/CreateAdsApi.dart';
 import '../components/shared.dart';
 import '../controller/authentication.dart';
 
+<<<<<<< HEAD
 class SignUp extends StatelessWidget {
   SignUp({super.key});
   String msg = "";
   AuthController authController = Get.put(AuthController());
   @override
   Widget build(BuildContext context) {
+=======
+class SignUp extends StatefulWidget {
+  const SignUp({Key? key}) : super(key: key);
+
+  @override
+  State<SignUp> createState() => _SignUpState();
+}
+
+class _SignUpState extends State<SignUp> {
+  String msg = "";
+  AuthController authController = Get.put(AuthController());
+  bool passwordObscured = true;
+  bool passwordObscured1 = true;
+
+  @override
+  Widget build(BuildContext context) {
+    final controller = Get.put(SignUpController());
+>>>>>>> da54417f197b84a8b59cfe828034c555e33c2bd9
     return Scaffold(
       appBar: AppBar(
           leading: GestureDetector(
@@ -32,6 +55,7 @@ class SignUp extends StatelessWidget {
                   width: width * 1.5, height: height * 0.3),
               Input(authController.fullname, 'Full Name', false,
                   TextInputType.text, null),
+<<<<<<< HEAD
               SizedBox(height: 5),
               Input(authController.email, 'E-mail Or Phone', false,
                   TextInputType.text, null),
@@ -91,6 +115,126 @@ class SignUp extends StatelessWidget {
                   }
                 }),
               ),
+=======
+              // Container(decoration:BoxDecoration(borderRadius: BorderRadius.circular(5),color:Colors.white ),height: 48,width:width*0.9,child:
+              // TextField(controller: authController.fullname,obscureText: false,
+              //   style: TxtStyle("",const Color(0xff8b8d9e), 15, FontWeight.w500),
+              //   decoration: InputDecoration(fillColor:Color(0xffececec),filled: true,suffixIcon:null,border: InputBorder.none,focusedBorder: InputBorder.none,
+              //     hintText:'Full Name',hintStyle: TxtStyle("",const Color(0xff8b8d9e), 15, FontWeight.w500),
+              //   ),
+              // )),
+              SizedBox(height: 5),
+              Input(authController.email, 'E-mail', false, TextInputType.text,
+                  null,onChanged: (value) {
+        print(value);
+        emailAds=value;
+        },),
+              // Container(decoration:BoxDecoration(borderRadius: BorderRadius.circular(5),color:Colors.white ),height: 48,width:width*0.9,child:
+              // TextField(controller: authController.email,obscureText: false,
+              //   style: TxtStyle("",const Color(0xff8b8d9e), 15, FontWeight.w500),
+              //   decoration: InputDecoration(fillColor:Color(0xffececec),filled: true,suffixIcon:null,border: InputBorder.none,focusedBorder: InputBorder.none,
+              //     hintText:'E-mail Or Phone',hintStyle: TxtStyle("",const Color(0xff8b8d9e), 15, FontWeight.w500),
+              //   ),
+              // )),
+              SizedBox(height: 5),
+              Input(authController.phone, 'Phone', false, TextInputType.text,
+                  null,onChanged: (value){
+                phoneNumber=value;
+                  }),
+              SizedBox(height: 5),
+              Input(
+                  authController.pass,
+                  'Password',
+                  passwordObscured,
+                  TextInputType.text,
+                  IconButton(
+                    onPressed: () {
+                      setState(() {
+                        passwordObscured = !passwordObscured;
+                      });
+                    },
+                    icon: Icon(
+                      passwordObscured
+                          ? Icons.visibility_off
+                          : Icons.visibility,
+                    ),
+                  )),
+              // Container(decoration:BoxDecoration(borderRadius: BorderRadius.circular(5),color:Colors.white ),height: 48,width:width*0.9,child:
+              // TextField(controller: authController.pass,obscureText:  passwordObscured,
+              //   style: TxtStyle("",const Color(0xff8b8d9e), 15, FontWeight.w500),
+              //   decoration: InputDecoration(fillColor:Color(0xffececec),filled: true,suffixIcon:IconButton(
+              //     onPressed: (){
+              //       setState(() {
+              //         passwordObscured=!passwordObscured;
+              //       });
+              //     },
+              //     icon: Icon(
+              //       passwordObscured
+              //           ? Icons.visibility_off
+              //           :Icons.visibility,
+              //     ),
+              //   ),border: InputBorder.none,focusedBorder: InputBorder.none,
+              //     hintText:'Password',hintStyle: TxtStyle("",const Color(0xff8b8d9e), 15, FontWeight.w500),
+              //
+              //   ),
+              // )),
+
+              SizedBox(height: 5),
+              Input(
+                  authController.confirmPass,
+                  'Confirm Password',
+                  passwordObscured1,
+                  TextInputType.text,
+                  IconButton(
+                    onPressed: () {
+                      setState(() {
+                        passwordObscured1 = !passwordObscured1;
+                      });
+                    },
+                    icon: Icon(
+                      passwordObscured1
+                          ? Icons.visibility_off
+                          : Icons.visibility,
+                    ),
+                  )),
+              // Container(decoration:BoxDecoration(borderRadius: BorderRadius.circular(5),color:Colors.white ),height: 48,width:width*0.9,child:
+              // TextField(controller: authController.confirmPass,obscureText:  passwordObscured,
+              //   style: TxtStyle("",const Color(0xff8b8d9e), 15, FontWeight.w500),
+              //   decoration: InputDecoration(fillColor:Color(0xffececec),filled: true,suffixIcon:IconButton(
+              //     onPressed: (){
+              //       setState(() {
+              //         passwordObscured1=!passwordObscured1;
+              //       });
+              //     },
+              //     icon: Icon(
+              //       passwordObscured1
+              //           ? Icons.visibility_off
+              //           :Icons.visibility,
+              //     ),
+              //   ),border: InputBorder.none,focusedBorder: InputBorder.none,
+              //     hintText:'Confirm Password',hintStyle: TxtStyle("",const Color(0xff8b8d9e), 15, FontWeight.w500),
+              //
+              //   ),
+              // )),
+              SizedBox(height: 15),
+              Txt(msg, Color(0xffF23B5F), 20, FontWeight.normal),
+              MainBtn(
+                  Txt('Sign Up', Colors.white, 20, FontWeight.bold),
+                  width * 0.9,
+                  height * 0.07,
+                  10,
+                  Color(0xffF23B5F),
+                  Color(0xffF23B5F), () {
+                setState(() {
+                  msg = authController.validateSignUp();
+                });
+
+                if (msg.isEmpty) {
+                  //========================start signing up or route to code/home screen============
+                  authController.register();
+                }
+              }),
+>>>>>>> da54417f197b84a8b59cfe828034c555e33c2bd9
               SizedBox(
                 height: 20,
               ),
@@ -113,26 +257,62 @@ class SignUp extends StatelessWidget {
                       ),
                       Row(
                         children: [
+<<<<<<< HEAD
                           FaIcon(
                             FontAwesomeIcons.facebook,
                             size: 30,
                             color: Color(0xff25334D),
+=======
+                          GestureDetector(
+                           onTap:(){
+                             controller.signInWithFacebook().then((value) => print("Thats data of user ${value?.user?.displayName.toString()}"));
+                           } ,
+                            child: FaIcon(
+                              FontAwesomeIcons.facebook,
+                              size: 30,
+                              color: Color(0xff25334D),
+                            ),
+>>>>>>> da54417f197b84a8b59cfe828034c555e33c2bd9
                           ),
                           SizedBox(
                             width: 10,
                           ),
+<<<<<<< HEAD
                           FaIcon(
                             FontAwesomeIcons.google,
                             size: 30,
                             color: Color(0xff25334D),
+=======
+                          GestureDetector(
+                            onTap: () {
+                              controller.signInWithGoogle();
+                            },
+                            child: FaIcon(
+                              FontAwesomeIcons.google,
+                              size: 30,
+                              color: Color(0xff25334D),
+                            ),
+>>>>>>> da54417f197b84a8b59cfe828034c555e33c2bd9
                           ),
                           SizedBox(
                             width: 10,
                           ),
+<<<<<<< HEAD
                           FaIcon(
                             FontAwesomeIcons.twitter,
                             size: 30,
                             color: Color(0xff25334D),
+=======
+                          GestureDetector(
+                            onTap: () {
+                              controller.signInWithTwitter();
+                            },
+                            child: FaIcon(
+                              FontAwesomeIcons.twitter,
+                              size: 30,
+                              color: Color(0xff25334D),
+                            ),
+>>>>>>> da54417f197b84a8b59cfe828034c555e33c2bd9
                           ),
                         ],
                       )
